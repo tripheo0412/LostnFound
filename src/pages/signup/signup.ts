@@ -14,10 +14,10 @@ export class SignupPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { name: string, email: string, password: string } = {
-    name: 'Test Human',
-    email: 'test@example.com',
-    password: 'test'
+  account: { username: string, password: string, email: string } = {
+    username: 'Test Human',
+    password: 'test',
+    email: 'test@example.com'
   };
 
   // Our translated text strings
