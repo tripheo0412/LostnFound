@@ -4,6 +4,7 @@ import { IonicPage, ModalController, NavController } from 'ionic-angular';
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 import { FoundPage } from '../found/found';
+import {SettingsPage} from '../settings/settings';
 
 @IonicPage()
 @Component({
@@ -48,7 +49,13 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
-    this.navCtrl.push('FoundPage', {
+    this.navCtrl.push('ItemDetailPage', {
+      item: item
+    });
+  }
+  /////
+  openSettings(item: Item) {
+    this.navCtrl.push('SettingsPage', {
       item: item
     });
   }

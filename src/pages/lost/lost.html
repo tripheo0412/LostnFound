@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Found Something ?</ion-title>
+    <ion-title>Lost Something ?</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -150,7 +150,7 @@
         <ion-option value="26">26</ion-option>
         <ion-option value="27">27</ion-option>
         <ion-option value="28">28</ion-option>
-        <ion-option value="29" [disabled]="!(checkFeb*leap)">29</ion-option>
+        <ion-option value="29" [disabled]="checkFeb && leap">29</ion-option>
         <ion-option value="30" [disabled]="checkFeb">30</ion-option>
         <ion-option value="31" [disabled]="check30+checkFeb">31</ion-option>
       </ion-select>
@@ -158,7 +158,7 @@
 
   </ion-list>
   <ion-buttons end>
-    <button ion-button icon-only (click)="addItemTest()">
+    <button ion-button icon-only (click)="addItem()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-buttons>

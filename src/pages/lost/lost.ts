@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the FoundPage page.
+ * Generated class for the LostPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,10 +10,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-found',
-  templateUrl: 'found.html',
+  selector: 'page-lost',
+  templateUrl: 'lost.html',
 })
-export class FoundPage {
+export class LostPage {
+
   type: string;
   location: string;
   day: string;
@@ -55,13 +56,8 @@ export class FoundPage {
     console.log('Year Change:', val, this.checkFeb,this.check30,this.leap);
   }
 
-  addItemTest() {
-
-  }
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FoundPage');
+    console.log('ionViewDidLoad LostPage');
   }
-
 
 }
