@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { User} from '../../providers/user/user';
 import { Settings } from '../../providers/providers';
 
 /**
@@ -35,6 +35,7 @@ export class SettingsPage {
   subSettings: any = SettingsPage;
 
   constructor(public navCtrl: NavController,
+    public user: User,
     public settings: Settings,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
@@ -63,6 +64,11 @@ export class SettingsPage {
     this.form.valueChanges.subscribe((v) => {
       this.settings.merge(this.form.value);
     });
+  }
+
+  logout() {
+    this.user.logout();
+    this.navCtrl.push('LoginPage');
   }
 
   ionViewDidLoad() {

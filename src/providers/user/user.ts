@@ -37,6 +37,8 @@ export class User {
     let seq = this.api.post('login', accountInfo).share();
 
     seq.subscribe((res: any) => {
+      console.log(res.token);
+      localStorage.setItem("token",res.token);
       // If the API returned a successful response, mark the user as logged in
       if (res.status == 'success') {
         this._loggedIn(res);
@@ -72,7 +74,7 @@ export class User {
    * Log the user out, which forgets the session
    */
   logout() {
-    this._user = null;
+    localStorage.removeItem("token");
   }
 
   /**
