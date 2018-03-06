@@ -3,8 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
 import { MediaProvider } from "../../providers/media/media";
-import {Api} from "../../providers/api/api";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @IonicPage()
 @Component({
@@ -20,17 +18,21 @@ export class ItemCreatePage {
 
   imageURI:any;
 
-  imageFileName:any;
-
   item: any;
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera,public api: Api, public http: HttpClient,public media: MediaProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public viewCtrl: ViewController,
+    formBuilder: FormBuilder,
+    public camera: Camera,
+    public media: MediaProvider)
+    {
     this.form = formBuilder.group({
-      file: [''],
-      title: ['', Validators.required],
-      description: ['']
+      profilePic: [''],
+      name: ['', Validators.required],
+      about: ['']
     });
 
     // Watch the form for changes, and
@@ -50,7 +52,7 @@ export class ItemCreatePage {
         quality:100
       }).then((data) => {
         this.imageURI = data;
-        this.form.patchValue({ 'file': 'data:image/jpg;base64,' + data });
+        this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
       }, (err) => {
         alert('Unable to take photo');
       })
@@ -70,13 +72,13 @@ export class ItemCreatePage {
     let reader = new FileReader();
     reader.onload = (readerEvent) => {
       let imageData = (readerEvent.target as any).result;
-      this.form.patchValue({ 'file': imageData });
+      this.form.patchValue({ 'profilePic': imageData });
     };
     reader.readAsDataURL(event.target.files[0]);
   }
 
   getProfileImageStyle() {
-    return 'url(' + this.form.controls['file'].value + ')'
+    return 'url(' + this.form.controls['profilePic'].value + ')'
   }
 
   /**
@@ -92,40 +94,11 @@ export class ItemCreatePage {
    */
   done() {
     if (!this.form.valid) { return; }
-    // const settings = {
-    //   headers: new HttpHeaders().set('x-access-token',localStorage.getItem('token')
-    //   )};
-    // console.log(settings);
-    // console.log(this.form.value);
-    // const body = {
-    //   file: this.form.value.file,
-    //   title: this.form.value.title
-    // }
-    // console.log(body);
-    // let path = 'http://media.mw.metropolia.fi/wbma/media'
-    // let settings = new HttpHeaders().set('content-type', 'multipart/form-data');
-    const token = localStorage.getItem('token');
-    console.log(token);
-    const settings =
-    {
-      headers: new HttpHeaders().set('x-access-token', token)
-    }// const formData: FormData = new FormData();
-    //
-    // formData.append('files', this.form.value.file);
-    // formData.append("title", this.form.value.title);
-    //
-    // this.http.post(path, formData).subscribe(
-    //   (r)=>{console.lchiuog('got r', r)}
-    // )
     console.log(this.file);
     const body: FormData = new FormData();
     body.append('file',this.file);
     body.append('title',this.form.value.title);
-    this.api.post('media',body,settings).subscribe(r => {
-      console.log(r);
-    });
+    this.media.uploadFile(body);
     this.viewCtrl.dismiss(this.form.value);
-
-    //this.media.uploadFile(this.a);
   }
 }
