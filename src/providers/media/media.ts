@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
 import {Api} from "../api/api";
 
 /*
@@ -12,6 +10,76 @@ import {Api} from "../api/api";
 */
 @Injectable()
 export class MediaProvider {
+  constructor(public api: Api){
 
+  }
 
+  deleteFile(id) {
+    this.api.delete('media/'+id,this.api.settings).subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      }
+    )
+  }
+
+  requestFile(id) {
+    this.api.get('media/'+id,this.api.settings).subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      }
+    )
+  }
+
+  requestFileByUser(id) {
+    this.api.get('media/user/'+id,this.api.settings).subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      }
+    )
+  }
+
+  requestFileByCurrentUser() {
+    this.api.get('media/user',this.api.settings).subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      }
+    )
+  }
+
+  searchFile(des) {
+    const body = {
+      description: des
+    }
+    this.api.post('media/search',body,this.api.settings).subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      }
+    )
+  }
+
+  updateFile(id, des) {
+    const body = {
+      description: des
+    }
+    this.api.put('media/'+id,body,this.api.settings).subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      }
+    )
+  }
+
+  uploadFile(body) {
+    this.api.post('media',body,this.api.settings).subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      }
+    )
+  }
 }

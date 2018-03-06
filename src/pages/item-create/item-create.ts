@@ -14,7 +14,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class ItemCreatePage {
   @ViewChild('fileInput') fileInput;
 
-  a: File;
+  file: File;
 
   isReadyToSave: boolean;
 
@@ -65,7 +65,7 @@ export class ItemCreatePage {
 
 
   processWebImage(event: any) {
-    this.a = event.target.files[0];
+    this.file = event.target.files[0];
     console.log(event.target.files[0]);
     let reader = new FileReader();
     reader.onload = (readerEvent) => {
@@ -117,9 +117,9 @@ export class ItemCreatePage {
     // this.http.post(path, formData).subscribe(
     //   (r)=>{console.lchiuog('got r', r)}
     // )
-    console.log(this.a);
+    console.log(this.file);
     const body: FormData = new FormData();
-    body.append('file',this.a);
+    body.append('file',this.file);
     body.append('title',this.form.value.title);
     this.api.post('media',body,settings).subscribe(r => {
       console.log(r);
