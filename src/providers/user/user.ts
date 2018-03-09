@@ -3,6 +3,7 @@ import 'rxjs/add/operator/toPromise';
 import { Injectable } from '@angular/core';
 
 import { Api } from '../api/api';
+import {HttpHeaders} from "@angular/common/http";
 
 /**
  * Most apps have the concept of a User. This is a simple provider
@@ -35,6 +36,7 @@ export class User {
    */
   login(accountInfo: any) {
     let seq = this.api.post('login', accountInfo).share();
+    console.log('loginuser');
 
     seq.subscribe((res: any) => {
       console.log(res.token);
@@ -66,7 +68,6 @@ export class User {
     }, err => {
       console.error('ERROR', err);
     });
-
     return seq;
   }
 
@@ -82,5 +83,24 @@ export class User {
    */
   _loggedIn(resp) {
     this._user = resp.user;
+  }
+
+  getUser() {
+    let settings =
+      {
+        headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+      }
+    let seq = this.api.get('users/user',settings);
+    seq.subscribe((res: any) => {
+      // If the API returned a successful response, mark the user as logged in
+      if (res.status == 'success') {
+        this._loggedIn(res);
+        console.log('test'+res);
+        return res;
+      }
+    }, err => {
+      console.error('ERROR', err);
+    });
+
   }
 }

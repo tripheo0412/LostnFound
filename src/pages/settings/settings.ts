@@ -68,7 +68,7 @@ export class SettingsPage {
 
   logout() {
     this.user.logout();
-    this.navCtrl.push('LoginPage');
+    this.navCtrl.push('WelcomePage');
   }
 
   ionViewDidLoad() {
