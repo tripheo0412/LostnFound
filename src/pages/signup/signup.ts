@@ -124,7 +124,7 @@ export class SignupPage {
 
   }
 
-  test() {
+  doSignUp() {
     this.user.signup(this.account).toPromise().then(response => {
       console.log(response);
       this.user.login(this.account).toPromise().then(response1 =>{
@@ -140,24 +140,6 @@ export class SignupPage {
       });
       toast.present();
     })
-  }
-
-
-  doSignup() {
-    // Attempt to login in through our User service
-    this.user.signup(this.account).subscribe((resp: any) => {
-
-      console.log(resp);
-    }, (err) => {
-      this.navCtrl.push(WelcomePage);
-      // Unable to sign up
-      let toast = this.toastCtrl.create({
-        message: this.signupErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
   }
 
   navLogin(){
