@@ -1,17 +1,5 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Found Something ?</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content class="outer-content">
-
   <ion-list>
-    <ion-list-header>Type</ion-list-header>
-
     <ion-item>
       <ion-label>Type</ion-label>
       <ion-select [(ngModel)]="type">
@@ -23,14 +11,34 @@
     <ion-item>
       <ion-label>Location</ion-label>
       <ion-select [(ngModel)]="location">
-        <ion-option value="hel">Helsinki</ion-option>
-        <ion-option value="esp">Espoo</ion-option>
+        <ion-option value="Helsinki">Helsinki</ion-option>
+        <ion-option value="Espoo">Espoo</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label>Date Found From</ion-label>
-      <ion-select (ionChange)="monthChange($event)">
+      <ion-label>From Date</ion-label>
+      <ion-select (ionChange)="yearChangeFrom($event)">
+        <ion-option selected="true" >1989</ion-option>
+        <ion-option>1990</ion-option>
+        <ion-option>1991</ion-option>
+        <ion-option>1992</ion-option>
+        <ion-option>1993</ion-option>
+        <ion-option>1994</ion-option>
+        <ion-option>1995</ion-option>
+        <ion-option>1996</ion-option>
+        <ion-option>1997</ion-option>
+        <ion-option>1998</ion-option>
+        <ion-option>1999</ion-option>
+        <ion-option>2000</ion-option>
+        <ion-option>2001</ion-option>
+        <ion-option>2002</ion-option>
+        <ion-option>2003</ion-option>
+        <ion-option>2004</ion-option>
+        <ion-option>2005</ion-option>
+        <ion-option>2400</ion-option>
+      </ion-select>
+      <ion-select (ionChange)="monthChangeFrom($event)">
         <ion-option selected="true" value="01">January</ion-option>
         <ion-option value="02">February</ion-option>
         <ion-option value="03" >March</ion-option>
@@ -44,20 +52,7 @@
         <ion-option value="11">November</ion-option>
         <ion-option value="12">December</ion-option>
       </ion-select>
-      <ion-select (ionChange)="yearChange($event)">
-        <ion-option selected="true" >1989</ion-option>
-        <ion-option>1990</ion-option>
-        <ion-option>1991</ion-option>
-        <ion-option>1992</ion-option>
-        <ion-option>1993</ion-option>
-        <ion-option>1994</ion-option>
-        <ion-option>1995</ion-option>
-        <ion-option>1996</ion-option>
-        <ion-option>1997</ion-option>
-        <ion-option>1998</ion-option>
-        <ion-option>2400</ion-option>
-      </ion-select>
-      <ion-select (ionChange)="dayChange($event)">
+      <ion-select (ionChange)="dayChangeFrom($event)">
         <ion-option selected="true" value="01">01</ion-option>
         <ion-option value="02">02</ion-option>
         <ion-option value="03">03</ion-option>
@@ -86,15 +81,35 @@
         <ion-option value="26">26</ion-option>
         <ion-option value="27">27</ion-option>
         <ion-option value="28">28</ion-option>
-        <ion-option value="29" [disabled]="!(checkFeb*leap)">29</ion-option>
+        <ion-option value="29" [disabled]="check29()">29</ion-option>
         <ion-option value="30" [disabled]="checkFeb">30</ion-option>
         <ion-option value="31" [disabled]="check30+checkFeb">31</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label>Date Found From</ion-label>
-      <ion-select (ionChange)="monthChange($event)">
+      <ion-label>To Date</ion-label>
+      <ion-select (ionChange)="yearChangeTo($event)">
+        <ion-option selected="true" >1989</ion-option>
+        <ion-option>1990</ion-option>
+        <ion-option>1991</ion-option>
+        <ion-option>1992</ion-option>
+        <ion-option>1993</ion-option>
+        <ion-option>1994</ion-option>
+        <ion-option>1995</ion-option>
+        <ion-option>1996</ion-option>
+        <ion-option>1997</ion-option>
+        <ion-option>1998</ion-option>
+        <ion-option>1999</ion-option>
+        <ion-option>2000</ion-option>
+        <ion-option>2001</ion-option>
+        <ion-option>2002</ion-option>
+        <ion-option>2003</ion-option>
+        <ion-option>2004</ion-option>
+        <ion-option>2005</ion-option>
+        <ion-option>2400</ion-option>
+      </ion-select>
+      <ion-select (ionChange)="monthChangeTo($event)">
         <ion-option selected="true" value="01">January</ion-option>
         <ion-option value="02">February</ion-option>
         <ion-option value="03" >March</ion-option>
@@ -108,20 +123,7 @@
         <ion-option value="11">November</ion-option>
         <ion-option value="12">December</ion-option>
       </ion-select>
-      <ion-select (ionChange)="yearChange($event)">
-        <ion-option selected="true" >1989</ion-option>
-        <ion-option>1990</ion-option>
-        <ion-option>1991</ion-option>
-        <ion-option>1992</ion-option>
-        <ion-option>1993</ion-option>
-        <ion-option>1994</ion-option>
-        <ion-option>1995</ion-option>
-        <ion-option>1996</ion-option>
-        <ion-option>1997</ion-option>
-        <ion-option>1998</ion-option>
-        <ion-option>2400</ion-option>
-      </ion-select>
-      <ion-select (ionChange)="dayChange($event)">
+      <ion-select (ionChange)="dayChangeTo($event)">
         <ion-option selected="true" value="01">01</ion-option>
         <ion-option value="02">02</ion-option>
         <ion-option value="03">03</ion-option>
@@ -150,17 +152,24 @@
         <ion-option value="26">26</ion-option>
         <ion-option value="27">27</ion-option>
         <ion-option value="28">28</ion-option>
-        <ion-option value="29" [disabled]="!(checkFeb*leap)">29</ion-option>
+        <ion-option value="29" [disabled]="check29()">29</ion-option>
         <ion-option value="30" [disabled]="checkFeb">30</ion-option>
         <ion-option value="31" [disabled]="check30+checkFeb">31</ion-option>
       </ion-select>
     </ion-item>
 
   </ion-list>
-  <ion-buttons end>
-    <button ion-button icon-only (click)="addItemTest()">
-      <ion-icon name="add"></ion-icon>
-    </button>
-  </ion-buttons>
+  <div class="my-button">
+    <ion-row >
+      <ion-col align-self-center   width-50>
+        <button ion-button (click)="found()">Found</button>
+      </ion-col>
+      <ion-col align-self-center  width-50>
+        <button ion-button (click)="lost()">Lost</button>
+      </ion-col>
+    </ion-row>
+
+
+  </div>
 
 </ion-content>

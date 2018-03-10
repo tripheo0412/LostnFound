@@ -50,16 +50,18 @@ export class MediaProvider {
     )
   }
 
-  searchFile(des) {
+  searchFile(title) {
     const body = {
-      description: des
+      title: title
     }
-    this.api.post('media/search',body,this.api.settings).subscribe(res => {
+    let seq = this.api.post('media/search',body,this.api.settings);
+    seq.subscribe(res => {
         console.log(res);
       }, err => {
         console.log(err);
       }
     )
+    return seq;
   }
 
   updateFile(id, des) {

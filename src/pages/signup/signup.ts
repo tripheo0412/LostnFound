@@ -126,28 +126,30 @@ export class SignupPage {
 
   test() {
     this.user.signup(this.account).toPromise().then(response => {
+      console.log(response);
       this.user.login(this.account).toPromise().then(response1 =>{
         this.done();
       })
+    }, (err) => {
+      this.navCtrl.push(WelcomePage);
+      // Unable to sign up
+      let toast = this.toastCtrl.create({
+        message: this.signupErrorString,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
     })
   }
 
 
   doSignup() {
     // Attempt to login in through our User service
-
     this.user.signup(this.account).subscribe((resp: any) => {
-      console.log(resp.user_id);
-      this.user_id = resp.user_id;
-      console.log((this.user_id));
-      this.user.login(this.account).subscribe((data: any)=> {
-        this.done();
-      });
 
+      console.log(resp);
     }, (err) => {
-
       this.navCtrl.push(WelcomePage);
-
       // Unable to sign up
       let toast = this.toastCtrl.create({
         message: this.signupErrorString,
