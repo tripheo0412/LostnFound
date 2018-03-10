@@ -3,6 +3,7 @@ import { IonicPage, MenuController, NavController, Platform } from 'ionic-angula
 
 import { TranslateService } from '@ngx-translate/core';
 
+
 export interface Slide {
   title: string;
   description: string;
@@ -15,6 +16,7 @@ export interface Slide {
   templateUrl: 'tutorial.html'
 })
 export class TutorialPage {
+  w: any;
   slides: Slide[];
   showSkip = true;
   dir: string = 'ltr';
@@ -27,7 +29,7 @@ export class TutorialPage {
       "TUTORIAL_SLIDE2_DESCRIPTION",
       "TUTORIAL_SLIDE3_TITLE",
       "TUTORIAL_SLIDE3_DESCRIPTION",
-    ]).subscribe(
+  ]).subscribe(
       (values) => {
         console.log('Loaded values', values);
         this.slides = [

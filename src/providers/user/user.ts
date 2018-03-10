@@ -85,22 +85,17 @@ export class User {
     this._user = resp.user;
   }
 
-  getUser() {
-    let settings =
-      {
-        headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
-      }
+  getUser(token) {
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token',token)
+    }
     let seq = this.api.get('users/user',settings);
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
-      if (res.status == 'success') {
-        this._loggedIn(res);
-        console.log('test'+res);
-        return res;
-      }
+        console.log('test'+res.user_id);
     }, err => {
       console.error('ERROR', err);
     });
-
+    return seq;
   }
 }

@@ -1,47 +1,77 @@
-<ion-header>
+<ion-content class="background">
 
-  <ion-navbar>
-    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content>
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
-    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
-    <div class="profile-image-wrapper" (click)="getPicture()">
-      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
-        <ion-icon name="add"></ion-icon>
-        <div>
-          {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
-        </div>
-      </div>
-      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
-    </div>
+    <ion-grid>
+      <ion-row >
+        <ion-col col-4 offset-4>
+          <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
+          <div class="profile-image-wrapper" (click)="getPicture()">
+            <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
+              <ion-icon name="add"></ion-icon>
+              <div>
+                {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+              </div>
+            </div>
+            <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4 offset-4 text-center>
+          <P>Hello there</P>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
-  <form (submit)="done()">
-    <ion-list>
 
-      <ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="username" [(ngModel)]="account.username" name="username"></ion-input>
-      </ion-item>
 
-      <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
-      </ion-item>
+  <form (submit)="test()">
 
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
+    <ion-grid>
+
+      <ion-row>
+        <ion-col col-2>
+          <div class="icon_app"></div>
+        </ion-col>
+        <ion-col col-10>
+          <ion-item>
+            <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
+            <ion-input type="username" [(ngModel)]="account.username" name="username"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-2>
+          <div class="icon_app"></div>
+        </ion-col>
+        <ion-col col-10>
+          <ion-item>
+            <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+            <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-2>
+          <div class="icon_app" justify-content-center></div>
+        </ion-col>
+        <ion-col col-10>
+          <ion-item>
+            <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+            <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
       <div padding>
         <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
       </div>
 
-    </ion-list>
+      <p text-center>Already have an account?</p>
+
+    </ion-grid>
+
   </form>
 </ion-content>

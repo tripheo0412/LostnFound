@@ -9,6 +9,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MediaProvider} from "../../providers/media/media";
 import {WelcomePage} from "../welcome/welcome";
 import {LoginPage} from "../login/login";
+import {HttpHeaders} from "@angular/common/http";
+import {Api} from "../../providers/api/api";
 
 @IonicPage()
 @Component({
@@ -25,6 +27,8 @@ export class SignupPage {
     email: 'test@example.com'
   };
   @ViewChild('fileInput') fileInput;
+
+  promises = [];
 
   private loginErrorString: string;
 
@@ -44,6 +48,7 @@ export class SignupPage {
   private signupErrorString: string;
 
   constructor(public navCtrl: NavController,
+              public api: Api,
               public user: User,
               public toastCtrl: ToastController,
               public translateService: TranslateService, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public media: MediaProvider) {
@@ -103,38 +108,42 @@ export class SignupPage {
    * The user is done and wants to create the item, so return it
    * back to the presenter.
    */
-  doLogin() {
-    console.log('doLogin');
-    this.user.login(this.account).subscribe((resp) => {
-    }, (err) => {
-      // Unable to log in
-      let toast = this.toastCtrl.create({
-        message: this.loginErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
-  }
+
 
   done() {
-    this.doSignup();
-    console.log(this.account);
-    if (!this.form.valid) {
-      return;
-    }
     console.log(this.file);
     const body: FormData = new FormData();
     body.append('file', this.file);
-    body.append('title', '#$%^lnf#$%^profile#$%^' + this.account.username);
+    body.append('title', '#$%^lnf#$%^profile#$%^' + this.user_id);
+    const settings = {
+      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
+    }
+    this.api.settings = settings;
     this.media.uploadFile(body);
     this.navCtrl.push(MainPage);
+
   }
+
+  test() {
+    this.user.signup(this.account).toPromise().then(response => {
+      this.user.login(this.account).toPromise().then(response1 =>{
+        this.done();
+      })
+    })
+  }
+
 
   doSignup() {
     // Attempt to login in through our User service
+
     this.user.signup(this.account).subscribe((resp: any) => {
-        this.user.login(this.account);
+      console.log(resp.user_id);
+      this.user_id = resp.user_id;
+      console.log((this.user_id));
+      this.user.login(this.account).subscribe((data: any)=> {
+        this.done();
+      });
+
     }, (err) => {
 
       this.navCtrl.push(WelcomePage);

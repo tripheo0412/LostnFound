@@ -1,39 +1,45 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
-  </ion-navbar>
-
-</ion-header>
 
 
-<ion-content>
+
+<ion-content class="background">
   <form (submit)="doLogin()">
-    <ion-list>
+    <ion-grid >
+      <ion-row >
+        <div class="splash-logo"></div>
+      </ion-row>
+      <p text-center>Welcome Back!</p>
 
-      <ion-item>
-        <ion-label fixed>{{ 'USERNAME' | translate }}</ion-label>
-        <ion-input type="username" [(ngModel)]="account.username" name="username"></ion-input>
-      </ion-item>
+      <ion-row  >
+        <ion-col col-2>
+          <div class="icon"></div>
+        </ion-col>
+        <ion-col col-10>
+          <ion-item >
+            <ion-label fixed>{{ 'USERNAME' | translate }}</ion-label>
+            <ion-input type="username" [(ngModel)]="account.username" name="username"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-      <!--
-      Want to use a Username instead of an Email? Here you go:
-
-      <ion-item>
-        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
-      </ion-item>
-      -->
-
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
+      <ion-row >
+        <ion-col col-2>
+          <div class="icon"></div>
+        </ion-col>
+        <ion-col col-10>
+          <ion-item>
+            <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+            <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
       <div padding>
         <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
       </div>
-
-    </ion-list>
+      <div padding>
+        <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
+      </div>
+      <p text-center>Don't have an account?</p>
+    </ion-grid>
   </form>
 </ion-content>

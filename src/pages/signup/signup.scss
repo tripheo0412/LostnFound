@@ -1,4 +1,22 @@
 page-signup {
+  .background{
+    background-image: url('../../assets/img/welcome/bg.jpg');
+  }
+  .item-md {
+    border-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+  }
+
+  .icon_app {
+    border-radius: 50%;
+    margin: auto;
+    background: url('../assets/icon/Icon-83.5@2x.png') repeat transparent;
+    background-size: 100%;
+    width: 37px;
+    height: 37px;
+  }
+
   .profile-image-wrapper {
     text-align: center;
     margin: 20px 0;
@@ -32,4 +50,5 @@ page-signup {
       }
     }
   }
+
 }

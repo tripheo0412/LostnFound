@@ -1,13 +1,45 @@
+<!--<ion-content scroll="false">-->
+  <!--<div class="splash-bg"></div>-->
+  <!--<div class="splash-info">-->
+    <!--<div class="splash-logo"></div>-->
+    <!--<div class="splash-intro">-->
+      <!--{{ 'WELCOME_INTRO' | translate }}-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div padding>-->
+    <!--<button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>-->
+    <!--<button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>-->
+  <!--</div>-->
+<!--</ion-content>-->
+<link href="https://fonts.googleapis.com/css?family=Coiny|Lobster|Mina|Pacifico" rel="stylesheet">
 <ion-content scroll="false">
-  <div class="splash-bg"></div>
-  <div class="splash-info">
-    <div class="splash-logo"></div>
-    <div class="splash-intro">
-      {{ 'WELCOME_INTRO' | translate }}
+  <div class="slogan">
+        Lost N Found
+  </div>
+  <div id="slideshow">
+    <div id="slide-wrapper">
+      <!--<img class="slide" src="../../assets/img/welcome/1.jpg">-->
+      <!--<img class="slide" src="../../assets/img/welcome/2.jpg">-->
+      <img class="slide" src="../../assets/img/welcome/3.jpg">
+      <img class="slide" src="../../assets/img/welcome/4.jpg">
+      <img class="slide" src="../../assets/img/welcome/5.jpg">
+      <img class="slide" src="../../assets/img/welcome/6.jpg">
+      <img class="slide" src="../../assets/img/welcome/7.jpg">
     </div>
   </div>
-  <div padding>
-    <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button>
-    <button ion-button block (click)="login()" class="login">{{ 'LOGIN' | translate }}</button>
+  <div class="my-button">
+    <ion-row >
+      <ion-col align-self-center   width-50>
+        <button ion-button clear (click)="signup()" class="butt">{{ 'SIGNUP' | translate }}</button>
+      </ion-col>
+      <ion-col align-self-center  width-50>
+        <button ion-button clear (click)="login()" class="butt">{{ 'LOGIN' | translate }}</button>
+      </ion-col>
+    </ion-row>
+
+
   </div>
+
 </ion-content>
+
+

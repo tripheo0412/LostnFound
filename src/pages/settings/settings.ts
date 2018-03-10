@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 import { User} from '../../providers/user/user';
 import { Settings } from '../../providers/providers';
+import {WelcomePage} from "../welcome/welcome";
 
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -36,6 +37,7 @@ export class SettingsPage {
 
   constructor(public navCtrl: NavController,
     public user: User,
+    public nav: Nav,
     public settings: Settings,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
@@ -68,7 +70,8 @@ export class SettingsPage {
 
   logout() {
     this.user.logout();
-    this.navCtrl.push('WelcomePage');
+    this.nav.setRoot('WelcomePage');
+    this.nav.popToRoot();
   }
 
   ionViewDidLoad() {
