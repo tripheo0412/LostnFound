@@ -157,4 +157,9 @@ export class SignupPage {
       toast.present();
     });
   }
+
+  navLogin(){
+    this.navCtrl.push('LoginPage');
+}
+
 }

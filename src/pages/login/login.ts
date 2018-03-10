@@ -47,4 +47,8 @@ export class LoginPage {
       toast.present();
     });
   }
+
+  navSignup(){
+    this.navCtrl.push('SignupPage');
+  }
 }

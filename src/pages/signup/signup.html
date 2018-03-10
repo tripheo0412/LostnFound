@@ -18,7 +18,7 @@
       </ion-row>
       <ion-row>
         <ion-col col-4 offset-4 text-center>
-          <P>Hello there</P>
+          <P class="text-setting">Hello there !</P>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -27,51 +27,54 @@
 
   <form (submit)="test()">
 
-    <ion-grid>
+    <ion-grid padding>
 
-      <ion-row>
-        <ion-col col-2>
+      <ion-row align-items-end>
+        <ion-col col-1 >
           <div class="icon_app"></div>
         </ion-col>
-        <ion-col col-10>
-          <ion-item>
-            <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
+        <ion-col col-11>
+          <ion-item >
             <ion-input type="username" [(ngModel)]="account.username" name="username"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
-      <ion-row>
-        <ion-col col-2>
+      <ion-row align-items-end>
+        <ion-col col-1>
           <div class="icon_app"></div>
         </ion-col>
-        <ion-col col-10>
+        <ion-col col-11>
           <ion-item>
-            <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
             <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
-      <ion-row>
-        <ion-col col-2>
-          <div class="icon_app" justify-content-center></div>
+      <ion-row align-items-end>
+        <ion-col col-1 >
+          <div class="icon_app"></div>
         </ion-col>
-        <ion-col col-10>
+        <ion-col col-11>
           <ion-item>
-            <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
             <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
-      <div padding>
-        <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
-      </div>
-
-      <p text-center>Already have an account?</p>
-
     </ion-grid>
 
+    <div padding>
+      <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+    </div>
+
   </form>
+
+  <div class="my-button">
+    <ion-row >
+      <ion-col   width-100>
+        <button ion-button clear (click)="navLogin()" class="butt">Already have an account?</button>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

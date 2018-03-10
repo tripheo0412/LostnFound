@@ -2,10 +2,17 @@ page-login {
   .splash-logo {
     border-radius: 50%;
     margin: auto;
-    background: url('../assets/icon/Icon-83.5@2x.png') repeat transparent;
+    background: url('../assets/icon/icon_new_3.png') repeat transparent;
     background-size: 100%;
     width: 128px;
     height: 128px;
+    margin-top: 50px;
+  }
+
+  .text-setting{
+    font-size: 20px;
+    color: white;
+    text-align: center;
   }
 
   .background{
@@ -18,12 +25,43 @@ page-login {
     color: white;
   }
 
-  .icon {
+  .item-ios {
+    border-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+  }
+
+  .icon-1 {
     border-radius: 50%;
     margin: auto;
-    background: url('../assets/icon/Icon-83.5@2x.png') repeat transparent;
     background-size: 100%;
-    width: 37px;
-    height: 37px;
+    width: 48px;
+    height: 48px;
+    background: url('../assets/icon/circle_white/icon_2x.png') repeat transparent;
+  }
+
+  .icon-2 {
+    border-radius: 50%;
+    margin: auto;
+    background-size: 100%;
+    width: 48px;
+    height: 48px;
+    background: url('../assets/icon/icon_lock/ic_lock.png') repeat transparent;
+  }
+
+  .my-button {
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 8%;
+    display: block;
+    margin-bottom: auto;
+    margin-top: auto;
+  }
+
+  .butt {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    color: white;
   }
 }
