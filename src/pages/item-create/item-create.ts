@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import {IonicPage, NavController, ToastController, ViewController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController, ViewController} from 'ionic-angular';
 import { MediaProvider } from "../../providers/media/media";
 
 @IonicPage()
@@ -28,20 +28,20 @@ export class ItemCreatePage {
     formBuilder: FormBuilder,
     public camera: Camera,
     public media: MediaProvider,
-    public toastCtrl: ToastController)
+    public toastCtrl: ToastController,
+    public  navPam: NavParams)
     {
     this.form = formBuilder.group({
       profilePic: [''],
-      name: ['', Validators.required],
+      name: [this.navPam.get('param1')],
       about: ['']
     });
-
+    console.log(this.navPam.get('param1'));
     // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
   }
-
   ionViewDidLoad() {
 
   }
@@ -99,6 +99,7 @@ export class ItemCreatePage {
     const body: FormData = new FormData();
     body.append('file',this.file);
     body.append('title',this.form.value.name);
+    body.append('description', this.form.value.about);
     this.media.uploadFile(body);
     this.viewCtrl.dismiss(this.form.value);
   }

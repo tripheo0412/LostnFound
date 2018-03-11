@@ -142,9 +142,11 @@ export class FoundPage {
     }
   }
 
-  retFound() {
+  retFound(title) {
     if (this.foundId.length == 0){
-      this.navCtrl.push('ItemCreatePage');
+      this.navCtrl.push('ItemCreatePage',{
+        param1: title
+      });
       let toast = this.toastCtrl.create({
         message: `
           Please upload your image and write a brief description.
@@ -220,13 +222,15 @@ export class FoundPage {
         }
       }
       this.foundId = foundId;
-      this.retFound();
+      this.retFound(foundTitle);
     });
   }
-  retLost(){
+  retLost(title){
     console.log(this.lostId.length)
     if (this.lostId.length == 0){
-      this.navCtrl.push('ItemCreatePage');
+      this.navCtrl.push('ItemCreatePage',{
+        param1: title
+      });
       let toast = this.toastCtrl.create({
         message: "Unfortunately, your item has not been found yet \n" +
         "Please upload your image and write a brief description."
@@ -303,7 +307,7 @@ export class FoundPage {
         console.log(this.lostId.length);
       }
       this.lostId = lostId;
-      this.retLost();
+      this.retLost(lostTitle);
     });
   }
   ionViewDidLoad() {
