@@ -23,12 +23,23 @@ page-login {
     border-color: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
     color: white;
+    border-bottom-color: white !important;
+  }
+
+  .item-inner{
+    border-bottom-color: white !important;
+    box-shadow: none !important;
   }
 
   .item-ios {
     border-color: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
     color: white;
+    border-bottom-color: white;
+  }
+
+  .bottom-border-setting{
+    border-bottom-color: white;
   }
 
   .icon-1 {
@@ -56,6 +67,7 @@ page-login {
     display: block;
     margin-bottom: auto;
     margin-top: auto;
+    position: fixed;
   }
 
   .butt {

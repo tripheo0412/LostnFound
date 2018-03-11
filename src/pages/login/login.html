@@ -1,40 +1,40 @@
 <ion-content class="background">
   <form (submit)="doLogin()">
 
-    <ion-grid >
+    <ion-grid  padding-bottom>
       <ion-row >
         <div class="splash-logo"></div>
       </ion-row>
       <p class="text-setting">Welcome Back!</p>
     </ion-grid>
 
-    <ion-grid padding>
-      <ion-row align-items-end >
+    <ion-grid padding >
+      <ion-row align-items-end padding-left padding-right >
         <ion-col col-2>
           <div class="icon-1"></div>
         </ion-col>
         <ion-col col-10>
-          <ion-item >
-            <ion-input type="username" [(ngModel)]="account.username" name="username"></ion-input>
+          <ion-item class="bottom-border-setting">
+            <ion-input type="username" [(ngModel)]="account.username" name="username" placeholder="Username"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
-      <ion-row align-items-end>
+      <ion-row align-items-end padding-left padding-right>
         <ion-col col-2>
           <div class="icon-2"></div>
         </ion-col>
         <ion-col col-10>
           <ion-item>
-            <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+            <ion-input type="password" [(ngModel)]="account.password" name="password" placeholder="Password"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
-      <div padding>
+      <div padding-top padding-left padding-right>
         <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
       </div>
-      <div padding>
+      <div padding-top padding-left padding-right >
         <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
       </div>
     </ion-grid>

@@ -6,22 +6,46 @@ page-signup {
     border-color: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
     color: white;
+    border-bottom-color: white !important;
+  }
+
+  .item-inner{
+    border-bottom-color: white !important;
+    box-shadow: none !important;
   }
 
   .item-ios {
     border-color: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
     color: white;
+    border-bottom-color: white !important;
   }
 
-  .icon_app {
+  .icon-1 {
     border-radius: 50%;
     margin: auto;
-    background: url('../assets/icon/Icon-83.5@2x.png') repeat transparent;
     background-size: 100%;
-    width: 37px;
-    height: 37px;
-    align-content: flex-end;
+    width: 48px;
+    height: 48px;
+    background: url('../assets/icon/circle_white/icon_2x.png') repeat transparent;
+  }
+
+  .icon-2 {
+    border-radius: 50%;
+    margin: auto;
+    background-size: 100%;
+    width: 48px;
+    height: 48px;
+    background: url('../assets/icon/icon_email/ic_email.png') repeat transparent;
+  }
+
+  .icon-3 {
+    border-radius: 50%;
+    margin: auto;
+    background-size: 100%;
+    width: 48px;
+    height: 48px;
+    background: url('../assets/icon/icon_lock/ic_lock.png') repeat transparent;
   }
 
   .text-setting{

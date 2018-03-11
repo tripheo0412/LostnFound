@@ -15,17 +15,17 @@ export class LoginPage {
   // If you're using the username field with or without email, make
   // sure to add it to the type
   account: { username: string, password: string } = {
-    username: 'trih',
-    password: '123456'
+    username: '',
+    password: ''
   };
 
   // Our translated text strings
   private loginErrorString: string;
 
   constructor(public navCtrl: NavController,
-    public user: User,
-    public toastCtrl: ToastController,
-    public translateService: TranslateService) {
+              public user: User,
+              public toastCtrl: ToastController,
+              public translateService: TranslateService) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
