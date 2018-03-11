@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
 
+
+
 @IonicPage()
 @Component({
   selector: 'page-cards',
@@ -11,6 +13,8 @@ export class CardsPage {
   cardItems: any[];
 
   constructor(public navCtrl: NavController, public media: MediaProvider) {
+
+
     this.cardItems = [
       {
         user: {

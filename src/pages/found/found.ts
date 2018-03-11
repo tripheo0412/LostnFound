@@ -4,7 +4,6 @@ import {MediaProvider} from "../../providers/media/media";
 import {Camera} from "@ionic-native/camera";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ItemCreatePage} from "../item-create/item-create";
-import {convertDeepLinkConfigToWebpackFormat} from "@ionic/app-scripts/dist/webpack/ionic-environment-plugin";
 
 /**
  * Generated class for the FoundPage page.
