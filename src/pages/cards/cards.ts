@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import {MediaProvider} from "../../providers/media/media";
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 export class CardsPage {
   cardItems: any[];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public media: MediaProvider) {
     this.cardItems = [
       {
         user: {

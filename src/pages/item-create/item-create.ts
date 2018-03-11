@@ -97,7 +97,7 @@ export class ItemCreatePage {
     console.log(this.file);
     const body: FormData = new FormData();
     body.append('file',this.file);
-    body.append('title',this.form.value.title);
+    body.append('title',this.form.value.name);
     this.media.uploadFile(body);
     this.viewCtrl.dismiss(this.form.value);
   }

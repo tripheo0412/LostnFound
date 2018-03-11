@@ -24,12 +24,14 @@ export class MediaProvider {
   }
 
   requestFile(id) {
-    this.api.get('media/'+id,this.api.settings).subscribe(res => {
+    let seq = this.api.get('media/'+id,this.api.settings);
+    seq.subscribe(res => {
         console.log(res);
       }, err => {
         console.log(err);
       }
     )
+    return seq;
   }
 
   requestFileByUser(id) {
