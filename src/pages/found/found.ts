@@ -1,8 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
 import {Camera} from "@ionic-native/camera";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ItemCreatePage} from "../item-create/item-create";
+import {convertDeepLinkConfigToWebpackFormat} from "@ionic/app-scripts/dist/webpack/ionic-environment-plugin";
 
 /**
  * Generated class for the FoundPage page.
@@ -26,7 +28,8 @@ export class FoundPage {
   imageURI:any;
 
   item: any;
-
+  public foundId = [];
+  public lostId = [];
   form: FormGroup;
   lnf: string;
   type: string;
@@ -45,7 +48,8 @@ export class FoundPage {
               public navParams: NavParams,
               public media: MediaProvider,
               public camera: Camera,
-              public formBuilder: FormBuilder)   {
+              public formBuilder: FormBuilder,
+              public toastCtrl: ToastController)   {
     this.type = 'phone';
     this.location = 'Helsinki';
     this.monthFrom = '01';
@@ -139,21 +143,56 @@ export class FoundPage {
     }
   }
 
+  retFound() {
+    if (this.foundId.length == 0){
+      this.navCtrl.push('ItemCreatePage');
+      let toast = this.toastCtrl.create({
+        message: `
+          Please upload your image and write a brief description.
+        `,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    } else {
+      this.navCtrl.push('CardsPage');
+      let toast = this.toastCtrl.create({
+        message: `
+          Woohoo there are some matching items \n
+          Take a look !
+        `,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    }
+  }
+
   found(){
     let foundId = [];
-    let title = '#$%^lnf*typemedia*categorylost*type'
+    let foundTitle = '#$%^lnf*typemedia*categoryfound*type'
       +this.type
       +'*location'
-      +this.location;
-    console.log(title);
+      +this.location
+      +'*yearfrom'
+      +this.yearFrom
+      +'*'+this.yearTo
+      +'*yearto*monthfrom'
+      +this.monthFrom
+      +'*'+this.monthTo
+      +'*monthto*dayfrom'
+      +this.dayFrom
+      +'*'+this.dayTo
+    ;
+    console.log(foundTitle);
     let seq = this.media.searchFile('#$%^lnf*typemedia*categorylost*type'
       +this.type
       +'*location'
       +this.location);
-    seq.subscribe((resp: any) => {
+    seq.toPromise().then((resp: any) => {
       console.log(resp.length);
       if (resp.length == 0){
-        //danh cho upload
+        this.navCtrl.push('ItemCreatePage');
       } else {
         for (let i = 0; i < resp.length; i++){
           let startyear = resp[i].title.indexOf("yearfrom") + 8;
@@ -168,7 +207,7 @@ export class FoundPage {
                   let endday = resp[i].title.indexOf("dayto");
                   let day = resp[i].title.substring(startday,endday).replace('*','');
                   if (Number(this.dayTo) >= Number(day.substr(0,2))){
-                      foundId[i] =resp[i].file_id;
+                    foundId[i] =resp[i].file_id;
                       console.log(foundId[i]);
                   }
               } else if (Number(this.monthTo) > Number(month.substr(0,2))) {
@@ -181,20 +220,60 @@ export class FoundPage {
           }
         }
       }
+      this.foundId = foundId;
+      this.retFound();
     });
-    return foundId;
   }
-
+  retLost(){
+    console.log(this.lostId.length)
+    if (this.lostId.length == 0){
+      this.navCtrl.push('ItemCreatePage');
+      let toast = this.toastCtrl.create({
+        message: "Unfortunately, your item has not been found yet \n" +
+        "Please upload your image and write a brief description."
+        ,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    } else {
+      this.navCtrl.push('CardsPage');
+      let toast = this.toastCtrl.create({
+        message: `
+          Woohoo there are some matching items
+          Take a look !
+        `,
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+    }
+  }
   lost() {
-    let lostId = [];
+    let lostId =[];
+    let lostTitle = '#$%^lnf*typemedia*categorylost*type'
+      +this.type
+      +'*location'
+      +this.location
+      +'*yearfrom'
+      +this.yearFrom
+      +'*'+this.yearTo
+      +'*yearto*monthfrom'
+      +this.monthFrom
+      +'*'+this.monthTo
+      +'*monthto*dayfrom'
+      +this.dayFrom
+      +'*'+this.dayTo
+    ;
     let seq = this.media.searchFile('#$%^lnf*typemedia*categoryfound*type'
       +this.type
       +'*location'
       +this.location);
-    seq.subscribe((resp: any) => {
+    seq.toPromise().then((resp: any) => {
       console.log(resp.length);
       if (resp.length == 0){
-        //danh cho upload
+        console.log('chuyen page');
+        this.navCtrl.push('ItemCreatePage');
       } else {
         for (let i = 0; i < resp.length; i++){
           let startyear = resp[i].title.indexOf("yearfrom") + 8;
@@ -220,61 +299,15 @@ export class FoundPage {
             lostId[i] = resp[i].file_id;
             console.log(lostId[i]);
           }
+
         }
+        console.log(this.lostId.length);
       }
+      this.lostId = lostId;
+      this.retLost();
     });
-    return lostId;
   }
-  addItemTest() {
-
-  }
-
-  getPicture() {
-    if (Camera['installed']()) {
-      this.camera.getPicture({
-        destinationType: this.camera.DestinationType.DATA_URL,
-        quality:100
-      }).then((data) => {
-        this.imageURI = data;
-        this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
-      }, (err) => {
-        alert('Unable to take photo');
-      })
-    } else {
-
-      console.log('initiated');
-      this.fileInput.nativeElement.click();
-      console.log('sucess');
-    }
-  }
-
-  processWebImage(event: any) {
-    this.file = event.target.files[0];
-    console.log(event.target.files[0]);
-    let reader = new FileReader();
-    reader.onload = (readerEvent) => {
-      let imageData = (readerEvent.target as any).result;
-      this.form.patchValue({ 'profilePic': imageData });
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  }
-
-  getProfileImageStyle() {
-    return 'url(' + this.form.controls['profilePic'].value + ')'
-  }
-
-  done() {
-    if (!this.form.valid) { return; }
-    console.log(this.file);
-    const body: FormData = new FormData();
-    body.append('file',this.file);
-    body.append('title',this.form.value.name);
-    this.media.uploadFile(body);
-  }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoundPage');
   }
-
-
 }

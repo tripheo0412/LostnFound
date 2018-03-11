@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { IonicPage, NavController, ViewController } from 'ionic-angular';
+import {IonicPage, NavController, ToastController, ViewController} from 'ionic-angular';
 import { MediaProvider } from "../../providers/media/media";
 
 @IonicPage()
@@ -27,7 +27,8 @@ export class ItemCreatePage {
     public viewCtrl: ViewController,
     formBuilder: FormBuilder,
     public camera: Camera,
-    public media: MediaProvider)
+    public media: MediaProvider,
+    public toastCtrl: ToastController)
     {
     this.form = formBuilder.group({
       profilePic: [''],
