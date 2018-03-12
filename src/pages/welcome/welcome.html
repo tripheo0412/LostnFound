@@ -17,25 +17,32 @@
   <div id="slideshow">
     <div id="slide-wrapper">
       <img class="slide" src="assets/img/welcome/8.jpg">
-      <img class="slide" src="assets/img/welcome/9.jpg">
       <img class="slide" src="assets/img/welcome/10.jpg">
       <img class="slide" src="assets/img/welcome/11.jpg">
       <img class="slide" src="assets/img/welcome/12.jpg">
-      <img class="slide" src="assets/img/welcome/13.jpg">
       <img class="slide" src="assets/img/welcome/15.jpg">
+      <img class="slide" src="assets/img/welcome/15.jpg">
+      <img class="slide" src="assets/img/welcome/12.jpg">
+      <img class="slide" src="assets/img/welcome/11.jpg">
+      <img class="slide" src="assets/img/welcome/10.jpg">
+      <img class="slide" src="assets/img/welcome/8.jpg">
     </div>
   </div>
-  <div class="my-button">
-    <ion-row >
-      <ion-col align-self-center   width-50>
-        <button ion-button clear (click)="signup()" class="butt">{{ 'SIGNUP' | translate }}</button>
-      </ion-col>
-      <ion-col align-self-center  width-50>
-        <button ion-button clear (click)="login()" class="butt">{{ 'LOGIN' | translate }}</button>
-      </ion-col>
-    </ion-row>
-
-
+  <div class= "button-card">
+    <div class="my-button">
+      <ion-grid>
+        <ion-col align-items-end>
+          <ion-row >
+            <ion-col align-self-center   width-50>
+              <button ion-button clear (click)="signup()" class="butt">{{ 'SIGNUP' | translate }}</button>
+            </ion-col>
+            <ion-col align-self-center  width-50>
+              <button ion-button clear (click)="login()" class="butt">{{ 'LOGIN' | translate }}</button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-grid>
+    </div>
   </div>
 
 </ion-content>
