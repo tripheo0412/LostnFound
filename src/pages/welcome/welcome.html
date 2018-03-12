@@ -12,10 +12,10 @@
   <!--</div>-->
 <!--</ion-content>-->
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Great+Vibes|Lobster|Pacifico|Satisfy" rel="stylesheet">
-<ion-content scroll="false">
-  <div class="slogan-icon"></div>
-  <div id="slideshow">
-    <div id="slide-wrapper">
+<ion-content >
+  <div class="slogan-icon no-bounce"></div>
+    <div id="slideshow">
+      <div id="slide-wrapper">
       <img class="slide" src="assets/img/welcome/8.jpg">
       <img class="slide" src="assets/img/welcome/10.jpg">
       <img class="slide" src="assets/img/welcome/11.jpg">
@@ -26,24 +26,23 @@
       <img class="slide" src="assets/img/welcome/11.jpg">
       <img class="slide" src="assets/img/welcome/10.jpg">
       <img class="slide" src="assets/img/welcome/8.jpg">
+      </div>
     </div>
-  </div>
-  <div class= "button-card">
+  <div class="button-card">
     <div class="my-button">
-      <ion-grid>
-        <ion-col align-items-end>
-          <ion-row >
-            <ion-col align-self-center   width-50>
-              <button ion-button clear (click)="signup()" class="butt">{{ 'SIGNUP' | translate }}</button>
-            </ion-col>
-            <ion-col align-self-center  width-50>
-              <button ion-button clear (click)="login()" class="butt">{{ 'LOGIN' | translate }}</button>
-            </ion-col>
-          </ion-row>
-        </ion-col>
+      <ion-grid >
+        <ion-row>
+          <ion-col align-items-center width-50>
+            <button ion-button clear (click)="signup()" class="butt">{{ 'SIGNUP' | translate }}</button>
+          </ion-col>
+          <ion-col align-self-center  width-50>
+            <button ion-button clear (click)="login()" class="butt">{{ 'LOGIN' | translate }}</button>
+          </ion-col>
+        </ion-row>
       </ion-grid>
     </div>
   </div>
+
 
 </ion-content>
 
