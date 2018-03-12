@@ -72,6 +72,7 @@ export class FoundPage {
     });
   }
 
+
   monthChangeFrom(val: any) {
     this.monthFrom = val;
     if (val == '02') {

@@ -19,6 +19,7 @@ import { CommentProvider } from '../providers/comment/comment';
 import { FavouriteProvider } from '../providers/favourite/favourite';
 import { RatingProvider } from '../providers/rating/rating';
 import { TagProvider } from '../providers/tag/tag';
+import {Facebook} from "@ionic-native/facebook";
 
 
 // The translate loader needs to know where to load i18n files
@@ -78,6 +79,7 @@ export function provideSettings(storage: Storage) {
     FavouriteProvider,
     RatingProvider,
     TagProvider,
+    Facebook
 
 
   ]
