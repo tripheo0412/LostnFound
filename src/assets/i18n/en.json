@@ -17,16 +17,22 @@
   "TUTORIAL_SKIP_BUTTON": "Skip",
   "TUTORIAL_CONTINUE_BUTTON": "Continue",
 
-  "TUTORIAL_SLIDE1_TITLE": "Welcome to Lost N Found",
-  "TUTORIAL_SLIDE1_DESCRIPTION": "The <b>Ionic Super Starter</b> is a fully-featured Ionic starter with many pre-built pages and best practices.",
+  "TUTORIAL_SLIDE0_TITLE": "Welcome to Lost N Found",
+  "TUTORIAL_SLIDE0_DESCRIPTION": "Join with us and things will not be forgotten anymore",
 
-  "TUTORIAL_SLIDE2_TITLE": "How to use the Super Starter",
-  "TUTORIAL_SLIDE2_DESCRIPTION": "Assemble the various page types you want and remove the ones you don't. We've provided many common mobile app page layouts, like login and signup pages, tabs, and this tutorial page.",
+  "TUTORIAL_SLIDE1_TITLE": "Lost N Found",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "Most convenient and less worry experience",
 
-  "TUTORIAL_SLIDE3_TITLE": "Getting Started",
-  "TUTORIAL_SLIDE3_DESCRIPTION": "Need help? Check out the Super Starter README for a full tutorial",
+  "TUTORIAL_SLIDE2_TITLE": "Lost N Found",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Cover everything",
 
-  "TUTORIAL_SLIDE4_TITLE": "Ready to Play?",
+  "TUTORIAL_SLIDE3_TITLE": "Lost N Found",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Earn and save money",
+
+  "TUTORIAL_SLIDE4_TITLE": "Lost N Found",
+  "TUTORIAL_SLIDE4_DESCRIPTION": "Navigation becomes easier ",
+
+  "TUTORIAL_SLIDE5_TITLE": "Are you ready ?",
 
   "WELCOME_INTRO": "The starting point for your next great Ionic app",
 

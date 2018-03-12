@@ -1,5 +1,22 @@
 page-tabs {
-  .tabs-md-dark .tab-button[aria-selected=true], .tabs-md-dark .tab-button[aria-selected=true] .tab-button-icon {
-    color: #3DD6D0 !important;
+  .tabbar {
+    a.tab-button[aria-selected=true]:nth-of-type(1) {
+      color: color($colors,primary);
+      .tab-button-icon {
+        color: color($colors,primary);
+      }
+    }
+    a.tab-button[aria-selected=true]:nth-of-type(2) {
+      color: color($colors,primary);
+      .tab-button-icon {
+        color: color($colors,primary);
+      }
+    }
+    a.tab-button[aria-selected=true]:nth-of-type(3) {
+      color: color($colors,primary);
+      .tab-button-icon {
+        color: color($colors,primary);
+      }
+    }
   }
 }

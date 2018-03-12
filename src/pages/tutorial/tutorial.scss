@@ -1,4 +1,8 @@
 page-tutorial {
+
+  .background{
+    background-color: black;
+  }
   .toolbar-background {
     background: transparent;
     border-color: transparent;
@@ -9,6 +13,8 @@ page-tutorial {
   }
 
   .slide-title {
+    color: #3DD6D0;
+    font-size: 30px;
     margin-top: 2.8rem;
   }
 
@@ -26,7 +32,7 @@ page-tutorial {
     padding: 0 40px;
     font-size: 14px;
     line-height: 1.5;
-    color: #60646B;
+    color: #3DD6D0;
 
     b {
       color: #000000;

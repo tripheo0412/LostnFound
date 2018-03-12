@@ -6,17 +6,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content no-bounce>
+<ion-content no-bounce class="background">
   <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)">
     <ion-slide *ngFor="let slide of slides">
       <img [src]="slide.image" class="slide-image" />
-      <!--<h2 class="slide-title" [innerHTML]="slide.title"></h2>-->
-      <!--<p [innerHTML]="slide.description"></p>-->
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
     </ion-slide>
     <ion-slide>
-      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" />
+      <img src="assets/img/rocket.png" class="slide-image" />
       <h2 ></h2>
       <button  ion-button icon-end large clear (click)="startApp()">
+        {{ 'TUTORIAL_SLIDE5_TITLE' | translate }}
         {{ 'TUTORIAL_CONTINUE_BUTTON' | translate }}
         <ion-icon name="arrow-forward"></ion-icon>
       </button>

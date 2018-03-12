@@ -1,8 +1,4 @@
 page-welcome {
-  @font-face {
-    font-family: myfont;
-    src: url('../../assets/font/Alisandra Demo.ttf') format('ttf');
-  }
   //.splash-bg {
   //  position: relative;
   //  background: url('../assets/img/splashbg.png') no-repeat transparent;
@@ -48,15 +44,17 @@ page-welcome {
   //    background-color: rgb(220, 220, 220);
   //  }
   //}
-  .slogan {
-    font-size: 30px;
-    font-family: 'Coiny', cursive;
-    left: 41%;
+  .slogan-icon {
+    border-radius: 50%;
+    background: url('../assets/icon/icon_new_3.png') repeat transparent;
+    background-size: 100%;
+    width: 128px;
+    height: 128px;
+    margin: 5% auto;
+    left: 0;
+    right: 0;
     z-index: 2;
-    top: 48%;
-    color: white;
     position: fixed;
-    background-color: transparent;
   }
   .abc{
     text-align: center;
