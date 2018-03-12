@@ -174,7 +174,7 @@ export class FoundPage {
 
   found(){
     let foundId = [];
-    let foundTitle = '#$%^lnf*typemedia*categoryfound*type'
+    let foundTitle = '#$%^lnf*catmedia*categoryfound*type'
       +this.type
       +'*location'
       +this.location
@@ -190,7 +190,7 @@ export class FoundPage {
       +'dayto'
     ;
     console.log(foundTitle);
-    let seq = this.media.searchFile('#$%^lnf*typemedia*categorylost*type'
+    let seq = this.media.searchFile('#$%^lnf*catmedia*categorylost*type'
       +this.type
       +'*location'
       +this.location);
@@ -269,7 +269,7 @@ export class FoundPage {
   }
   lost() {
     let lostId =[];
-    let lostTitle = '#$%^lnf*typemedia*categorylost*type'
+    let lostTitle = '#$%^lnf*catmedia*categorylost*type'
       +this.type
       +'*location'
       +this.location
@@ -284,7 +284,7 @@ export class FoundPage {
       +'*'+this.dayTo
       +'dayto'
     ;
-    let seq = this.media.searchFile('#$%^lnf*typemedia*categoryfound*type'
+    let seq = this.media.searchFile('#$%^lnf*catmedia*categoryfound*type'
       +this.type
       +'*location'
       +this.location);

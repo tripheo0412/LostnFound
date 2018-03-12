@@ -27,7 +27,6 @@ export class CardsPage {
     fileId = fileId.filter(item => item !== null);
     console.log(fileId);
     for (let i = 0; i < fileId.length; i++){
-      console.log(localStorage.getItem('token'));
       this.media.requestFile(fileId[i]).toPromise().then((resp0: any) => {
         this.time = this.pipe.transform(resp0.time_added, 'dd:MM:yy') ;
         this.image = 'http://media.mw.metropolia.fi/wbma/uploads/'+resp0.filename;

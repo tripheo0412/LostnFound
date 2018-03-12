@@ -96,4 +96,16 @@ export class User {
     });
     return seq;
   }
+
+  getCurrentUser() {
+    let seq = this.api.get('users/user',this.api.settings);
+    seq.subscribe((res: any) => {
+      // If the API returned a successful response, mark the user as logged in
+      if (res.status == 'success') {
+      }
+    }, err => {
+      console.error('ERROR', err);
+    });
+    return seq;
+  }
 }
