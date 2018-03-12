@@ -9,12 +9,17 @@ export class Items {
   items: Item[] = [];
   constructor(public media: MediaProvider,
               public user: User) {
+    this.reset();
+
+
+  }
+
+  getList() {
+
     let name;
     let profile;
     let description;
-    let items = [
-
-    ];
+    let items = [];
     this.user.getCurrentUser().toPromise().then((resp: any) => {
       this.media.requestFileByUser(resp.user_id).toPromise().then((resp: any) => {
         for (let i = 0; i < resp.length; i++) {
@@ -39,8 +44,10 @@ export class Items {
         }
       })
     })
+  }
 
-
+  reset(){
+    this.items = [];
   }
 
   query(params?: any) {

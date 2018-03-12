@@ -5,6 +5,7 @@ import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 import { User} from '../../providers/user/user';
 import { Settings } from '../../providers/providers';
 import {WelcomePage} from "../welcome/welcome";
+import {Items} from '../../mocks/providers/items';
 
 /**
  * The Settings page is a simple form that syncs with a Settings provider
@@ -41,7 +42,8 @@ export class SettingsPage {
     public settings: Settings,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
-    public translate: TranslateService) {
+    public translate: TranslateService,
+    public items: Items) {
   }
 
   _buildForm() {
@@ -69,6 +71,7 @@ export class SettingsPage {
   }
 
   logout() {
+    this.items.reset();
     this.user.logout();
     this.nav.setRoot('WelcomePage');
     this.nav.popToRoot();
