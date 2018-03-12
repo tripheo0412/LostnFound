@@ -1,230 +1,443 @@
-<ion-content class="outer-content">
-  <div>
-    <ion-list>
-      <ion-item>
-        <ion-label>Type</ion-label>
-        <ion-select [(ngModel)]="type">
-          <ion-option value="phone">Phone</ion-option>
-          <ion-option value="wallet">Wallet</ion-option>
-          <ion-option value="vehicles">Vehicles</ion-option>
-          <ion-option value="VehiclesPartandAccessories">Vehicles Part and Accessories</ion-option>
-          <ion-option value="VehiclesEquipment">Vehicles Equipment</ion-option>
-          <ion-option value="DomesticAppliances">Domestic Appliances</ion-option>
-          <ion-option value="DecorationandFurniture">Decoration and Furniture</ion-option>
-          <ion-option value="ClothesandShoes">Clothes and Shoes</ion-option>
-          <ion-option value="AccessoriesandWatches">Accessories and Watches</ion-option>
-          <ion-option value="BuildindMaterialandTools">Buildind Material and Tools</ion-option>
-          <ion-option value="PhonesandAccessories">Phones and Accessories</ion-option>
-          <ion-option value="ComputerandAccessories">Consumer Electronic</ion-option>
-          <ion-option value="ComputerandAccessories">Computer and Accessories</ion-option>
-        </ion-select>
-      </ion-item>
+<ion-content class="background">
 
-      <ion-item>
-        <ion-label>Location</ion-label>
-        <ion-select [(ngModel)]="location">
-          <ion-option value="Helsinki">Helsinki</ion-option>
-          <ion-option value="Espoo">Espoo</ion-option>
-          <ion-option value="Turku">Turku</ion-option>
-          <ion-option value="Tampere">Tampere</ion-option>
-          <ion-option value="Oulu">Oulu</ion-option>
-          <ion-option value="Vantaa">Vantaa</ion-option>
-          <ion-option value="Rovaniemi">Rovaniemi</ion-option>
-          <ion-option value="Jyväskylä">Jyväskylä</ion-option>
-          <ion-option value="Joensuu">Joensuu</ion-option>
-          <ion-option value="Vaasa">Vaasa</ion-option>
-          <ion-option value="Porvoo">Porvoo</ion-option>
-          <ion-option value="Kuopio">Kuopio</ion-option>
-          <ion-option value="Kemi">Kemi</ion-option>
-          <ion-option value="Pori">Pori</ion-option>
-          <ion-option value="Lahti">Lahti</ion-option>
-          <ion-option value="Mikkeli">Mikkeli</ion-option>
-          <ion-option value="Rauma">Rauma</ion-option>
-          <ion-option value="Pirkkala">Pirkkala</ion-option>
-          <ion-option value="Salo">Salo</ion-option>
-          <ion-option value="Kotka">Kotka</ion-option>
-          <ion-option value="Kouvola">Kouvola</ion-option>
-        </ion-select>
-      </ion-item>
+  <div class="tab">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6><button class="tablinks" (click)="openCity($event,'Found')">Found</button></ion-col>
+        <ion-col col-6><button class="tablinks" (click)="openCity($event, 'Lost')">Lost</button></ion-col>
+      </ion-row>
+    </ion-grid>
 
-      <ion-item>
-        <ion-label>From Date</ion-label>
-        <ion-select (ionChange)="yearChangeFrom($event)">
-          <ion-option selected="true" >1989</ion-option>
-          <ion-option>1990</ion-option>
-          <ion-option>1991</ion-option>
-          <ion-option>1992</ion-option>
-          <ion-option>1993</ion-option>
-          <ion-option>1994</ion-option>
-          <ion-option>1995</ion-option>
-          <ion-option>1996</ion-option>
-          <ion-option>1997</ion-option>
-          <ion-option>1998</ion-option>
-          <ion-option>1999</ion-option>
-          <ion-option>2000</ion-option>
-          <ion-option>2001</ion-option>
-          <ion-option>2002</ion-option>
-          <ion-option>2003</ion-option>
-          <ion-option>2004</ion-option>
-          <ion-option>2005</ion-option>
-          <ion-option>2006</ion-option>
-          <ion-option>2007</ion-option>
-          <ion-option>2008</ion-option>
-          <ion-option>2009</ion-option>
-          <ion-option>2010</ion-option>
-          <ion-option>2011</ion-option>
-          <ion-option>2012</ion-option>
-          <ion-option>2013</ion-option>
-          <ion-option>2014</ion-option>
-          <ion-option>2015</ion-option>
-          <ion-option>2016</ion-option>
-          <ion-option>2017</ion-option>
-          <ion-option>2018</ion-option>
-        </ion-select>
-        <ion-select (ionChange)="monthChangeFrom($event)">
-          <ion-option selected="true" value="01">January</ion-option>
-          <ion-option value="02">February</ion-option>
-          <ion-option value="03" >March</ion-option>
-          <ion-option value="04">April</ion-option>
-          <ion-option value="05">May</ion-option>
-          <ion-option value="06">June</ion-option>
-          <ion-option value="07">July</ion-option>
-          <ion-option value="08">August</ion-option>
-          <ion-option value="09">September</ion-option>
-          <ion-option value="10">October</ion-option>
-          <ion-option value="11">November</ion-option>
-          <ion-option value="12">December</ion-option>
-        </ion-select>
-        <ion-select (ionChange)="dayChangeFrom($event)">
-          <ion-option selected="true" value="01">01</ion-option>
-          <ion-option value="02">02</ion-option>
-          <ion-option value="03">03</ion-option>
-          <ion-option value="04">04</ion-option>
-          <ion-option value="05">05</ion-option>
-          <ion-option value="06">06</ion-option>
-          <ion-option value="07">07</ion-option>
-          <ion-option value="08">08</ion-option>
-          <ion-option value="09">09</ion-option>
-          <ion-option value="10">10</ion-option>
-          <ion-option value="11">11</ion-option>
-          <ion-option value="12">12</ion-option>
-          <ion-option value="13">13</ion-option>
-          <ion-option value="14">14</ion-option>
-          <ion-option value="15">15</ion-option>
-          <ion-option value="16">16</ion-option>
-          <ion-option value="17">17</ion-option>
-          <ion-option value="18">18</ion-option>
-          <ion-option value="19">19</ion-option>
-          <ion-option value="20">20</ion-option>
-          <ion-option value="21">21</ion-option>
-          <ion-option value="22">22</ion-option>
-          <ion-option value="23">23</ion-option>
-          <ion-option value="24">24</ion-option>
-          <ion-option value="25">25</ion-option>
-          <ion-option value="26">26</ion-option>
-          <ion-option value="27">27</ion-option>
-          <ion-option value="28">28</ion-option>
-          <ion-option value="29" [disabled]="check29()">29</ion-option>
-          <ion-option value="30" [disabled]="checkFeb">30</ion-option>
-          <ion-option value="31" [disabled]="check30+checkFeb">31</ion-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>To Date</ion-label>
-        <ion-select (ionChange)="yearChangeTo($event)">
-          <ion-option selected="true" >1989</ion-option>
-          <ion-option>1990</ion-option>
-          <ion-option>1991</ion-option>
-          <ion-option>1992</ion-option>
-          <ion-option>1993</ion-option>
-          <ion-option>1994</ion-option>
-          <ion-option>1995</ion-option>
-          <ion-option>1996</ion-option>
-          <ion-option>1997</ion-option>
-          <ion-option>1998</ion-option>
-          <ion-option>1999</ion-option>
-          <ion-option>2000</ion-option>
-          <ion-option>2001</ion-option>
-          <ion-option>2002</ion-option>
-          <ion-option>2003</ion-option>
-          <ion-option>2004</ion-option>
-          <ion-option>2005</ion-option>
-          <ion-option>2006</ion-option>
-          <ion-option>2007</ion-option>
-          <ion-option>2008</ion-option>
-          <ion-option>2009</ion-option>
-          <ion-option>2010</ion-option>
-          <ion-option>2011</ion-option>
-          <ion-option>2012</ion-option>
-          <ion-option>2013</ion-option>
-          <ion-option>2014</ion-option>
-          <ion-option>2015</ion-option>
-          <ion-option>2016</ion-option>
-          <ion-option>2017</ion-option>
-          <ion-option>2018</ion-option>
-        </ion-select>
-        <ion-select (ionChange)="monthChangeTo($event)">
-          <ion-option selected="true" value="01">January</ion-option>
-          <ion-option value="02">February</ion-option>
-          <ion-option value="03" >March</ion-option>
-          <ion-option value="04">April</ion-option>
-          <ion-option value="05">May</ion-option>
-          <ion-option value="06">June</ion-option>
-          <ion-option value="07">July</ion-option>
-          <ion-option value="08">August</ion-option>
-          <ion-option value="09">September</ion-option>
-          <ion-option value="10">October</ion-option>
-          <ion-option value="11">November</ion-option>
-          <ion-option value="12">December</ion-option>
-        </ion-select>
-        <ion-select (ionChange)="dayChangeTo($event)">
-          <ion-option selected="true" value="01">01</ion-option>
-          <ion-option value="02">02</ion-option>
-          <ion-option value="03">03</ion-option>
-          <ion-option value="04">04</ion-option>
-          <ion-option value="05">05</ion-option>
-          <ion-option value="06">06</ion-option>
-          <ion-option value="07">07</ion-option>
-          <ion-option value="08">08</ion-option>
-          <ion-option value="09">09</ion-option>
-          <ion-option value="10">10</ion-option>
-          <ion-option value="11">11</ion-option>
-          <ion-option value="12">12</ion-option>
-          <ion-option value="13">13</ion-option>
-          <ion-option value="14">14</ion-option>
-          <ion-option value="15">15</ion-option>
-          <ion-option value="16">16</ion-option>
-          <ion-option value="17">17</ion-option>
-          <ion-option value="18">18</ion-option>
-          <ion-option value="19">19</ion-option>
-          <ion-option value="20">20</ion-option>
-          <ion-option value="21">21</ion-option>
-          <ion-option value="22">22</ion-option>
-          <ion-option value="23">23</ion-option>
-          <ion-option value="24">24</ion-option>
-          <ion-option value="25">25</ion-option>
-          <ion-option value="26">26</ion-option>
-          <ion-option value="27">27</ion-option>
-          <ion-option value="28">28</ion-option>
-          <ion-option value="29" [disabled]="check29()">29</ion-option>
-          <ion-option value="30" [disabled]="checkFeb">30</ion-option>
-          <ion-option value="31" [disabled]="check30+checkFeb">31</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
   </div>
-  <div class="my-button">
-    <ion-row >
-      <ion-col align-self-center   width-50>
-        <button ion-button (click)="found()">Found</button>
-      </ion-col>
-      <ion-col align-self-center  width-50>
-        <button ion-button (click)="lost()">Lost</button>
-      </ion-col>
-    </ion-row>
+
+  <div id="Found" class="tabcontent">
+    <div class="form-setting">
+      <ion-list>
+        <ion-item>
+          <ion-label>Type</ion-label>
+          <ion-select [(ngModel)]="type">
+            <ion-option value="phone">Phone</ion-option>
+            <ion-option value="wallet">Wallet</ion-option>
+            <ion-option value="vehicles">Vehicles</ion-option>
+            <ion-option value="VehiclesPartandAccessories">Vehicles Part and Accessories</ion-option>
+            <ion-option value="VehiclesEquipment">Vehicles Equipment</ion-option>
+            <ion-option value="DomesticAppliances">Domestic Appliances</ion-option>
+            <ion-option value="DecorationandFurniture">Decoration and Furniture</ion-option>
+            <ion-option value="ClothesandShoes">Clothes and Shoes</ion-option>
+            <ion-option value="AccessoriesandWatches">Accessories and Watches</ion-option>
+            <ion-option value="BuildindMaterialandTools">Buildind Material and Tools</ion-option>
+            <ion-option value="PhonesandAccessories">Phones and Accessories</ion-option>
+            <ion-option value="ComputerandAccessories">Consumer Electronic</ion-option>
+            <ion-option value="ComputerandAccessories">Computer and Accessories</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Location</ion-label>
+          <ion-select [(ngModel)]="location">
+            <ion-option value="Helsinki">Helsinki</ion-option>
+            <ion-option value="Espoo">Espoo</ion-option>
+            <ion-option value="Turku">Turku</ion-option>
+            <ion-option value="Tampere">Tampere</ion-option>
+            <ion-option value="Oulu">Oulu</ion-option>
+            <ion-option value="Vantaa">Vantaa</ion-option>
+            <ion-option value="Rovaniemi">Rovaniemi</ion-option>
+            <ion-option value="Jyväskylä">Jyväskylä</ion-option>
+            <ion-option value="Joensuu">Joensuu</ion-option>
+            <ion-option value="Vaasa">Vaasa</ion-option>
+            <ion-option value="Porvoo">Porvoo</ion-option>
+            <ion-option value="Kuopio">Kuopio</ion-option>
+            <ion-option value="Kemi">Kemi</ion-option>
+            <ion-option value="Pori">Pori</ion-option>
+            <ion-option value="Lahti">Lahti</ion-option>
+            <ion-option value="Mikkeli">Mikkeli</ion-option>
+            <ion-option value="Rauma">Rauma</ion-option>
+            <ion-option value="Pirkkala">Pirkkala</ion-option>
+            <ion-option value="Salo">Salo</ion-option>
+            <ion-option value="Kotka">Kotka</ion-option>
+            <ion-option value="Kouvola">Kouvola</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>From Date</ion-label>
+          <ion-select (ionChange)="yearChangeFrom($event)">
+            <ion-option selected="true" >1989</ion-option>
+            <ion-option>1990</ion-option>
+            <ion-option>1991</ion-option>
+            <ion-option>1992</ion-option>
+            <ion-option>1993</ion-option>
+            <ion-option>1994</ion-option>
+            <ion-option>1995</ion-option>
+            <ion-option>1996</ion-option>
+            <ion-option>1997</ion-option>
+            <ion-option>1998</ion-option>
+            <ion-option>1999</ion-option>
+            <ion-option>2000</ion-option>
+            <ion-option>2001</ion-option>
+            <ion-option>2002</ion-option>
+            <ion-option>2003</ion-option>
+            <ion-option>2004</ion-option>
+            <ion-option>2005</ion-option>
+            <ion-option>2006</ion-option>
+            <ion-option>2007</ion-option>
+            <ion-option>2008</ion-option>
+            <ion-option>2009</ion-option>
+            <ion-option>2010</ion-option>
+            <ion-option>2011</ion-option>
+            <ion-option>2012</ion-option>
+            <ion-option>2013</ion-option>
+            <ion-option>2014</ion-option>
+            <ion-option>2015</ion-option>
+            <ion-option>2016</ion-option>
+            <ion-option>2017</ion-option>
+            <ion-option>2018</ion-option>
+          </ion-select>
+          <ion-select (ionChange)="monthChangeFrom($event)">
+            <ion-option selected="true" value="01">January</ion-option>
+            <ion-option value="02">February</ion-option>
+            <ion-option value="03" >March</ion-option>
+            <ion-option value="04">April</ion-option>
+            <ion-option value="05">May</ion-option>
+            <ion-option value="06">June</ion-option>
+            <ion-option value="07">July</ion-option>
+            <ion-option value="08">August</ion-option>
+            <ion-option value="09">September</ion-option>
+            <ion-option value="10">October</ion-option>
+            <ion-option value="11">November</ion-option>
+            <ion-option value="12">December</ion-option>
+          </ion-select>
+          <ion-select (ionChange)="dayChangeFrom($event)">
+            <ion-option selected="true" value="01">01</ion-option>
+            <ion-option value="02">02</ion-option>
+            <ion-option value="03">03</ion-option>
+            <ion-option value="04">04</ion-option>
+            <ion-option value="05">05</ion-option>
+            <ion-option value="06">06</ion-option>
+            <ion-option value="07">07</ion-option>
+            <ion-option value="08">08</ion-option>
+            <ion-option value="09">09</ion-option>
+            <ion-option value="10">10</ion-option>
+            <ion-option value="11">11</ion-option>
+            <ion-option value="12">12</ion-option>
+            <ion-option value="13">13</ion-option>
+            <ion-option value="14">14</ion-option>
+            <ion-option value="15">15</ion-option>
+            <ion-option value="16">16</ion-option>
+            <ion-option value="17">17</ion-option>
+            <ion-option value="18">18</ion-option>
+            <ion-option value="19">19</ion-option>
+            <ion-option value="20">20</ion-option>
+            <ion-option value="21">21</ion-option>
+            <ion-option value="22">22</ion-option>
+            <ion-option value="23">23</ion-option>
+            <ion-option value="24">24</ion-option>
+            <ion-option value="25">25</ion-option>
+            <ion-option value="26">26</ion-option>
+            <ion-option value="27">27</ion-option>
+            <ion-option value="28">28</ion-option>
+            <ion-option value="29" [disabled]="check29()">29</ion-option>
+            <ion-option value="30" [disabled]="checkFeb">30</ion-option>
+            <ion-option value="31" [disabled]="check30+checkFeb">31</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>To Date</ion-label>
+          <ion-select (ionChange)="yearChangeTo($event)">
+            <ion-option selected="true" >1989</ion-option>
+            <ion-option>1990</ion-option>
+            <ion-option>1991</ion-option>
+            <ion-option>1992</ion-option>
+            <ion-option>1993</ion-option>
+            <ion-option>1994</ion-option>
+            <ion-option>1995</ion-option>
+            <ion-option>1996</ion-option>
+            <ion-option>1997</ion-option>
+            <ion-option>1998</ion-option>
+            <ion-option>1999</ion-option>
+            <ion-option>2000</ion-option>
+            <ion-option>2001</ion-option>
+            <ion-option>2002</ion-option>
+            <ion-option>2003</ion-option>
+            <ion-option>2004</ion-option>
+            <ion-option>2005</ion-option>
+            <ion-option>2400</ion-option>
+          </ion-select>
+          <ion-select (ionChange)="monthChangeTo($event)">
+            <ion-option selected="true" value="01">January</ion-option>
+            <ion-option value="02">February</ion-option>
+            <ion-option value="03" >March</ion-option>
+            <ion-option value="04">April</ion-option>
+            <ion-option value="05">May</ion-option>
+            <ion-option value="06">June</ion-option>
+            <ion-option value="07">July</ion-option>
+            <ion-option value="08">August</ion-option>
+            <ion-option value="09">September</ion-option>
+            <ion-option value="10">October</ion-option>
+            <ion-option value="11">November</ion-option>
+            <ion-option value="12">December</ion-option>
+          </ion-select>
+          <ion-select (ionChange)="dayChangeTo($event)">
+            <ion-option selected="true" value="01">01</ion-option>
+            <ion-option value="02">02</ion-option>
+            <ion-option value="03">03</ion-option>
+            <ion-option value="04">04</ion-option>
+            <ion-option value="05">05</ion-option>
+            <ion-option value="06">06</ion-option>
+            <ion-option value="07">07</ion-option>
+            <ion-option value="08">08</ion-option>
+            <ion-option value="09">09</ion-option>
+            <ion-option value="10">10</ion-option>
+            <ion-option value="11">11</ion-option>
+            <ion-option value="12">12</ion-option>
+            <ion-option value="13">13</ion-option>
+            <ion-option value="14">14</ion-option>
+            <ion-option value="15">15</ion-option>
+            <ion-option value="16">16</ion-option>
+            <ion-option value="17">17</ion-option>
+            <ion-option value="18">18</ion-option>
+            <ion-option value="19">19</ion-option>
+            <ion-option value="20">20</ion-option>
+            <ion-option value="21">21</ion-option>
+            <ion-option value="22">22</ion-option>
+            <ion-option value="23">23</ion-option>
+            <ion-option value="24">24</ion-option>
+            <ion-option value="25">25</ion-option>
+            <ion-option value="26">26</ion-option>
+            <ion-option value="27">27</ion-option>
+            <ion-option value="28">28</ion-option>
+            <ion-option value="29" [disabled]="check29()">29</ion-option>
+            <ion-option value="30" [disabled]="checkFeb">30</ion-option>
+            <ion-option value="31" [disabled]="check30+checkFeb">31</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="my-button">
+      <ion-row >
+        <ion-col align-items-center   width-100>
+          <button ion-button block (click)="found()">Search</button>
+        </ion-col>
+      </ion-row>
 
 
+    </div>
+  </div>
+
+  <div id="Lost" class="tabcontent">
+    <div>
+      <ion-list>
+        <ion-item>
+          <ion-label>Type</ion-label>
+          <ion-select [(ngModel)]="type">
+            <ion-option value="phone">Phone</ion-option>
+            <ion-option value="wallet">Wallet</ion-option>
+            <ion-option value="vehicles">Vehicles</ion-option>
+            <ion-option value="VehiclesPartandAccessories">Vehicles Part and Accessories</ion-option>
+            <ion-option value="VehiclesEquipment">Vehicles Equipment</ion-option>
+            <ion-option value="DomesticAppliances">Domestic Appliances</ion-option>
+            <ion-option value="DecorationandFurniture">Decoration and Furniture</ion-option>
+            <ion-option value="ClothesandShoes">Clothes and Shoes</ion-option>
+            <ion-option value="AccessoriesandWatches">Accessories and Watches</ion-option>
+            <ion-option value="BuildindMaterialandTools">Buildind Material and Tools</ion-option>
+            <ion-option value="PhonesandAccessories">Phones and Accessories</ion-option>
+            <ion-option value="ComputerandAccessories">Consumer Electronic</ion-option>
+            <ion-option value="ComputerandAccessories">Computer and Accessories</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Location</ion-label>
+          <ion-select [(ngModel)]="location">
+            <ion-option value="Helsinki">Helsinki</ion-option>
+            <ion-option value="Espoo">Espoo</ion-option>
+            <ion-option value="Turku">Turku</ion-option>
+            <ion-option value="Tampere">Tampere</ion-option>
+            <ion-option value="Oulu">Oulu</ion-option>
+            <ion-option value="Vantaa">Vantaa</ion-option>
+            <ion-option value="Rovaniemi">Rovaniemi</ion-option>
+            <ion-option value="Jyväskylä">Jyväskylä</ion-option>
+            <ion-option value="Joensuu">Joensuu</ion-option>
+            <ion-option value="Vaasa">Vaasa</ion-option>
+            <ion-option value="Porvoo">Porvoo</ion-option>
+            <ion-option value="Kuopio">Kuopio</ion-option>
+            <ion-option value="Kemi">Kemi</ion-option>
+            <ion-option value="Pori">Pori</ion-option>
+            <ion-option value="Lahti">Lahti</ion-option>
+            <ion-option value="Mikkeli">Mikkeli</ion-option>
+            <ion-option value="Rauma">Rauma</ion-option>
+            <ion-option value="Pirkkala">Pirkkala</ion-option>
+            <ion-option value="Salo">Salo</ion-option>
+            <ion-option value="Kotka">Kotka</ion-option>
+            <ion-option value="Kouvola">Kouvola</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>From Date</ion-label>
+          <ion-select (ionChange)="yearChangeFrom($event)">
+            <ion-option selected="true" >1989</ion-option>
+            <ion-option>1990</ion-option>
+            <ion-option>1991</ion-option>
+            <ion-option>1992</ion-option>
+            <ion-option>1993</ion-option>
+            <ion-option>1994</ion-option>
+            <ion-option>1995</ion-option>
+            <ion-option>1996</ion-option>
+            <ion-option>1997</ion-option>
+            <ion-option>1998</ion-option>
+            <ion-option>1999</ion-option>
+            <ion-option>2000</ion-option>
+            <ion-option>2001</ion-option>
+            <ion-option>2002</ion-option>
+            <ion-option>2003</ion-option>
+            <ion-option>2004</ion-option>
+            <ion-option>2005</ion-option>
+            <ion-option>2006</ion-option>
+            <ion-option>2007</ion-option>
+            <ion-option>2008</ion-option>
+            <ion-option>2009</ion-option>
+            <ion-option>2010</ion-option>
+            <ion-option>2011</ion-option>
+            <ion-option>2012</ion-option>
+            <ion-option>2013</ion-option>
+            <ion-option>2014</ion-option>
+            <ion-option>2015</ion-option>
+            <ion-option>2016</ion-option>
+            <ion-option>2017</ion-option>
+            <ion-option>2018</ion-option>
+          </ion-select>
+          <ion-select (ionChange)="monthChangeFrom($event)">
+            <ion-option selected="true" value="01">January</ion-option>
+            <ion-option value="02">February</ion-option>
+            <ion-option value="03" >March</ion-option>
+            <ion-option value="04">April</ion-option>
+            <ion-option value="05">May</ion-option>
+            <ion-option value="06">June</ion-option>
+            <ion-option value="07">July</ion-option>
+            <ion-option value="08">August</ion-option>
+            <ion-option value="09">September</ion-option>
+            <ion-option value="10">October</ion-option>
+            <ion-option value="11">November</ion-option>
+            <ion-option value="12">December</ion-option>
+          </ion-select>
+          <ion-select (ionChange)="dayChangeFrom($event)">
+            <ion-option selected="true" value="01">01</ion-option>
+            <ion-option value="02">02</ion-option>
+            <ion-option value="03">03</ion-option>
+            <ion-option value="04">04</ion-option>
+            <ion-option value="05">05</ion-option>
+            <ion-option value="06">06</ion-option>
+            <ion-option value="07">07</ion-option>
+            <ion-option value="08">08</ion-option>
+            <ion-option value="09">09</ion-option>
+            <ion-option value="10">10</ion-option>
+            <ion-option value="11">11</ion-option>
+            <ion-option value="12">12</ion-option>
+            <ion-option value="13">13</ion-option>
+            <ion-option value="14">14</ion-option>
+            <ion-option value="15">15</ion-option>
+            <ion-option value="16">16</ion-option>
+            <ion-option value="17">17</ion-option>
+            <ion-option value="18">18</ion-option>
+            <ion-option value="19">19</ion-option>
+            <ion-option value="20">20</ion-option>
+            <ion-option value="21">21</ion-option>
+            <ion-option value="22">22</ion-option>
+            <ion-option value="23">23</ion-option>
+            <ion-option value="24">24</ion-option>
+            <ion-option value="25">25</ion-option>
+            <ion-option value="26">26</ion-option>
+            <ion-option value="27">27</ion-option>
+            <ion-option value="28">28</ion-option>
+            <ion-option value="29" [disabled]="check29()">29</ion-option>
+            <ion-option value="30" [disabled]="checkFeb">30</ion-option>
+            <ion-option value="31" [disabled]="check30+checkFeb">31</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>To Date</ion-label>
+          <ion-select (ionChange)="yearChangeTo($event)">
+            <ion-option selected="true" >1989</ion-option>
+            <ion-option>1990</ion-option>
+            <ion-option>1991</ion-option>
+            <ion-option>1992</ion-option>
+            <ion-option>1993</ion-option>
+            <ion-option>1994</ion-option>
+            <ion-option>1995</ion-option>
+            <ion-option>1996</ion-option>
+            <ion-option>1997</ion-option>
+            <ion-option>1998</ion-option>
+            <ion-option>1999</ion-option>
+            <ion-option>2000</ion-option>
+            <ion-option>2001</ion-option>
+            <ion-option>2002</ion-option>
+            <ion-option>2003</ion-option>
+            <ion-option>2004</ion-option>
+            <ion-option>2005</ion-option>
+            <ion-option>2400</ion-option>
+          </ion-select>
+          <ion-select (ionChange)="monthChangeTo($event)">
+            <ion-option selected="true" value="01">January</ion-option>
+            <ion-option value="02">February</ion-option>
+            <ion-option value="03" >March</ion-option>
+            <ion-option value="04">April</ion-option>
+            <ion-option value="05">May</ion-option>
+            <ion-option value="06">June</ion-option>
+            <ion-option value="07">July</ion-option>
+            <ion-option value="08">August</ion-option>
+            <ion-option value="09">September</ion-option>
+            <ion-option value="10">October</ion-option>
+            <ion-option value="11">November</ion-option>
+            <ion-option value="12">December</ion-option>
+          </ion-select>
+          <ion-select (ionChange)="dayChangeTo($event)">
+            <ion-option selected="true" value="01">01</ion-option>
+            <ion-option value="02">02</ion-option>
+            <ion-option value="03">03</ion-option>
+            <ion-option value="04">04</ion-option>
+            <ion-option value="05">05</ion-option>
+            <ion-option value="06">06</ion-option>
+            <ion-option value="07">07</ion-option>
+            <ion-option value="08">08</ion-option>
+            <ion-option value="09">09</ion-option>
+            <ion-option value="10">10</ion-option>
+            <ion-option value="11">11</ion-option>
+            <ion-option value="12">12</ion-option>
+            <ion-option value="13">13</ion-option>
+            <ion-option value="14">14</ion-option>
+            <ion-option value="15">15</ion-option>
+            <ion-option value="16">16</ion-option>
+            <ion-option value="17">17</ion-option>
+            <ion-option value="18">18</ion-option>
+            <ion-option value="19">19</ion-option>
+            <ion-option value="20">20</ion-option>
+            <ion-option value="21">21</ion-option>
+            <ion-option value="22">22</ion-option>
+            <ion-option value="23">23</ion-option>
+            <ion-option value="24">24</ion-option>
+            <ion-option value="25">25</ion-option>
+            <ion-option value="26">26</ion-option>
+            <ion-option value="27">27</ion-option>
+            <ion-option value="28">28</ion-option>
+            <ion-option value="29" [disabled]="check29()">29</ion-option>
+            <ion-option value="30" [disabled]="checkFeb">30</ion-option>
+            <ion-option value="31" [disabled]="check30+checkFeb">31</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="my-button">
+      <ion-row >
+        <ion-col align-items-center  width-100>
+          <button ion-button block (click)="lost()">Search</button>
+        </ion-col>
+      </ion-row>
+
+
+    </div>
   </div>
 
 </ion-content>

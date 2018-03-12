@@ -34,17 +34,16 @@
       <div padding-top padding-left padding-right>
         <button ion-button color="primary" block>{{ 'LOGIN_BUTTON' | translate }}</button>
       </div>
-      <div padding-top padding-left padding-right >
-        <ng-template #facebookLogin>
-          <button ion-button icon-right (click)="fblogin()">
-            Login with
-            <ion-icon name="logo-facebook"></ion-icon>
-          </button>
-        </ng-template>
-      </div>
     </ion-grid>
   </form>
-
+  <div padding-top padding-left padding-right >
+    <ng-template #facebookLogin>
+      <button ion-button icon-right (click)="fblogin()">
+        Login with
+        <ion-icon name="logo-facebook"></ion-icon>
+      </button>
+    </ng-template>
+  </div>
   <div class="my-button">
     <ion-row >
       <ion-col   width-100>

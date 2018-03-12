@@ -109,7 +109,7 @@ export class LoginPage {
   // Attempt to login in through our User service
   doLogin() {
     this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push('MainPage');
+      this.navCtrl.push(MainPage);
     }, (err) => {
       this.navCtrl.push('WelcomePage');
       // Unable to log in

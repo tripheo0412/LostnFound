@@ -1,4 +1,58 @@
 page-found {
+
+  .background{
+    background-image: url('../../assets/img/welcome/bg.jpg');
+  }
+
+  .tab {
+    overflow: hidden;
+    border: none;
+    background-color: inherit;
+  }
+
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 14px 16px;
+    border: transparent;
+    transition: 0.3s;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+  }
+
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #3DD6D0;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #3DD6D0 ;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+  }
+
+  /* Fade in tabs */
+  @-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
   .profile-image-wrapper {
     text-align: center;
     margin: 20px 0;
@@ -32,7 +86,13 @@ page-found {
       }
     }
   }
+
   .toast-message {
     white-space: pre-line;
+  }
+
+  .form-setting{
+    background-color: transparent !important;
+    border: none !important;
   }
 }

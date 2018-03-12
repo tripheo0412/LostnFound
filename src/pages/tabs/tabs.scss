@@ -1,3 +1,5 @@
 page-tabs {
-
+  .tabs-md-dark .tab-button[aria-selected=true], .tabs-md-dark .tab-button[aria-selected=true] .tab-button-icon {
+    color: #3DD6D0 !important;
+  }
 }
