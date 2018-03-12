@@ -91,11 +91,13 @@ export class MediaProvider {
   }
 
   uploadFile(body) {
-    this.api.post('media',body,this.api.settings).subscribe(res => {
+    let seq = this.api.post('media',body,this.api.settings);
+    seq.subscribe(res => {
         console.log(res);
       }, err => {
         console.log(err);
       }
     )
+    return seq;e
   }
 }

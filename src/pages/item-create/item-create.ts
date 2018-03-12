@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import {IonicPage, NavController, NavParams, ToastController, ViewController} from 'ionic-angular';
 import { MediaProvider } from "../../providers/media/media";
+import {Items} from '../../mocks/providers/items';
 
 @IonicPage()
 @Component({
@@ -29,7 +30,8 @@ export class ItemCreatePage {
     public camera: Camera,
     public media: MediaProvider,
     public toastCtrl: ToastController,
-    public  navPam: NavParams)
+    public  navPam: NavParams,
+    public itemprop: Items)
     {
     this.form = formBuilder.group({
       profilePic: [''],
@@ -88,7 +90,9 @@ export class ItemCreatePage {
   cancel() {
     this.viewCtrl.dismiss();
   }
+  createItem() {
 
+  }
   /**
    * The user is done and wants to create the item, so return it
    * back to the presenter.

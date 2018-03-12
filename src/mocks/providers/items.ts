@@ -9,7 +9,7 @@ export class Items {
   items: Item[] = [];
   constructor(public media: MediaProvider,
               public user: User) {
-    this.reset();
+    this.getList();
 
 
   }
@@ -44,10 +44,15 @@ export class Items {
         }
       })
     })
+    console.log('run get list');
+    console.log(this.items);
   }
 
   reset(){
+    console.log('run reset');
     this.items = [];
+    console.log(this.items);
+    return this.items;
   }
 
   query(params?: any) {
