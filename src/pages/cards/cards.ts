@@ -24,6 +24,7 @@ export class CardsPage {
               public user: User,
               public pipe: DatePipe) {
     let fileId = this.navPam.get('param1');
+    fileId = fileId.filter(item => item !== null);
     console.log(fileId);
     for (let i = 0; i < fileId.length; i++){
       console.log(localStorage.getItem('token'));
