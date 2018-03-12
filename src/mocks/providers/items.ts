@@ -1,60 +1,46 @@
 import { Injectable } from '@angular/core';
 
 import { Item } from '../../models/item';
+import {MediaProvider} from "../../providers/media/media";
+import {User} from "../../providers/user/user";
 
 @Injectable()
 export class Items {
   items: Item[] = [];
-
-  defaultItem: any = {
-    "name": "Burt Bear",
-    "profilePic": "assets/img/speakers/bear.jpg",
-    "about": "Burt is a Bear.",
-  };
-
-
-  constructor() {
+  constructor(public media: MediaProvider,
+              public user: User) {
+    let name;
+    let profile;
+    let description;
     let items = [
-      {
-        "name": "Burt Bear",
-        "profilePic": "assets/img/speakers/bear.jpg",
-        "about": "Burt is a Bear."
-      },
-      {
-        "name": "Charlie Cheetah",
-        "profilePic": "assets/img/speakers/cheetah.jpg",
-        "about": "Charlie is a Cheetah."
-      },
-      {
-        "name": "Donald Duck",
-        "profilePic": "assets/img/speakers/duck.jpg",
-        "about": "Donald is a Duck."
-      },
-      {
-        "name": "Eva Eagle",
-        "profilePic": "assets/img/speakers/eagle.jpg",
-        "about": "Eva is an Eagle."
-      },
-      {
-        "name": "Ellie Elephant",
-        "profilePic": "assets/img/speakers/elephant.jpg",
-        "about": "Ellie is an Elephant."
-      },
-      {
-        "name": "Molly Mouse",
-        "profilePic": "assets/img/speakers/mouse.jpg",
-        "about": "Molly is a Mouse."
-      },
-      {
-        "name": "Paul Puppy",
-        "profilePic": "assets/img/speakers/puppy.jpg",
-        "about": "Paul is a Puppy."
-      }
-    ];
 
-    for (let item of items) {
-      this.items.push(new Item(item));
-    }
+    ];
+    this.user.getCurrentUser().toPromise().then((resp: any) => {
+      this.media.requestFileByUser(resp.user_id).toPromise().then((resp: any) => {
+        for (let i = 0; i < resp.length; i++) {
+          console.log(resp[i].title);
+          if (resp[i].title.search('profile') > -1){
+            console.log('found');
+          } else {
+            let start = resp[i].title.indexOf('type') + 4;
+            let end = resp[i].title.indexOf('*location');
+            name = resp[i].title.slice(start,end);
+            profile = 'http://media.mw.metropolia.fi/wbma/uploads/'+resp[i].filename;
+            description = resp[i].description;
+            items[i-1] = {
+              "name": name,
+              "profilePic": profile,
+              "about": description
+            }
+          }
+        }
+        for (let item of items) {
+          this.items.push(new Item(item));
+        }
+      })
+    })
+
+
   }
 
   query(params?: any) {
