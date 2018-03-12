@@ -8,7 +8,7 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { HttpModule } from '@angular/http';
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/providers';
 import { User } from '../providers/providers';
@@ -20,6 +20,7 @@ import { FavouriteProvider } from '../providers/favourite/favourite';
 import { RatingProvider } from '../providers/rating/rating';
 import { TagProvider } from '../providers/tag/tag';
 import {Facebook} from "@ionic-native/facebook";
+import { CardProvider } from '../providers/card/card';
 
 
 // The translate loader needs to know where to load i18n files
@@ -50,6 +51,7 @@ export function provideSettings(storage: Storage) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -79,7 +81,8 @@ export function provideSettings(storage: Storage) {
     FavouriteProvider,
     RatingProvider,
     TagProvider,
-    Facebook
+    Facebook,
+    CardProvider
 
 
   ]

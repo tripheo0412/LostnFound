@@ -9,13 +9,13 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let item of cardItems">
+  <ion-card *ngFor="let item of carditem">
 
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="item.user.avatar">
+        <img [src]="item.avatar">
       </ion-avatar>
-      <h2>{{item.user.name}}</h2>
+      <h2>{{item.name}}</h2>
       <p>{{item.date }}</p>
     </ion-item>
 

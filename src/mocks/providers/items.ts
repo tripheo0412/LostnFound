@@ -9,9 +9,6 @@ export class Items {
   items: Item[] = [];
   constructor(public media: MediaProvider,
               public user: User) {
-    this.getList();
-
-
   }
 
   getList() {

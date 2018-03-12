@@ -98,6 +98,6 @@ export class MediaProvider {
         console.log(err);
       }
     )
-    return seq;e
+    return seq;
   }
 }
