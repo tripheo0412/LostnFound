@@ -21,6 +21,7 @@ import { RatingProvider } from '../providers/rating/rating';
 import { TagProvider } from '../providers/tag/tag';
 import {Facebook} from "@ionic-native/facebook";
 import { CardProvider } from '../providers/card/card';
+import { MarketProvider } from '../providers/market/market';
 
 
 // The translate loader needs to know where to load i18n files
@@ -82,7 +83,8 @@ export function provideSettings(storage: Storage) {
     RatingProvider,
     TagProvider,
     Facebook,
-    CardProvider
+    CardProvider,
+    MarketProvider
 
 
   ]

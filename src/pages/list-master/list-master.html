@@ -2,15 +2,9 @@
 
   <ion-navbar>
     <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
-
     <ion-buttons end>
-      <button ion-button icon-only (click)="addItem()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="openSettings()">
-        <ion-icon name="add"></ion-icon>
+      <button ion-button icon-only (click)="logout()">
+         <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>

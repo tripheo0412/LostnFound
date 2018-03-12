@@ -1,21 +1,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'CARDS_TITLE' | translate }}</ion-title>
+    <ion-title>Market</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-
-  <ion-card *ngFor="let item of cardItems">
+  <ion-card *ngFor="let item of marketitems">
 
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="item.user.avatar">
+        <img [src]="item.avatar">
       </ion-avatar>
-      <h2>{{item.user.name}}</h2>
+      <h2>{{item.name}}</h2>
       <p>{{item.date }}</p>
     </ion-item>
 
@@ -23,6 +22,8 @@
 
     <ion-card-content>
       <p>{{item.content}}</p>
+      <p>{{item.location}}</p>
+      <p>{{item.type}}</p>
     </ion-card-content>
 
     <ion-row>

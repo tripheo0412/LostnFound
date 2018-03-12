@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController } from 'ionic-angular';
+import {IonicPage, ModalController, Nav, NavController} from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
 import { FoundPage } from '../found/found';
 import {SettingsPage} from '../settings/settings';
+import {User} from "../../providers/user/user";
 
 @IonicPage()
 @Component({
@@ -14,7 +15,10 @@ import {SettingsPage} from '../settings/settings';
 export class ListMasterPage {
   currentItems: Item[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public items: Items,
+              public modalCtrl: ModalController,
+              public user: User,
+              public nav: Nav) {
     this.currentItems = this.items.query();
   }
 
@@ -24,13 +28,11 @@ export class ListMasterPage {
   ionViewWillEnter() {
     this.items.getList();
   }
-  ionViewDidEnter() {
-
-  }
-
-  ionViewWillLeave() {
+  ionViewDidLeave() {
     this.items.reset();
   }
+
+
 
   /**
    * Prompt the user to add a new item. This shows our ItemCreatePage in a
@@ -66,5 +68,11 @@ export class ListMasterPage {
     this.navCtrl.push('SettingsPage', {
       item: item
     });
+  }
+  logout() {
+    this.items.reset();
+    this.user.logout();
+    this.nav.setRoot('WelcomePage');
+    this.nav.popToRoot();
   }
 }

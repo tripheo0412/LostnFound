@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
 import {User} from "../../providers/user/user";
 import { DatePipe } from "@angular/common";
+import {MarketProvider} from "../../providers/market/market";
 
 
 @IonicPage()
@@ -12,7 +13,8 @@ import { DatePipe } from "@angular/common";
   providers: [DatePipe]
 })
 export class MarketPage {
-  cardItems = [];
+  marketitems = [];
+  fileid = [];
   name: any;
   profile: any;
   image: any;
@@ -22,42 +24,21 @@ export class MarketPage {
               public media: MediaProvider,
               public navPam: NavParams,
               public user: User,
-              public pipe: DatePipe) {
-    let fileId = this.navPam.get('param1');
-    fileId = fileId.filter(item => item !== null);
-    console.log(fileId);
-    for (let i = 0; i < fileId.length; i++){
-      console.log(localStorage.getItem('token'));
-      this.media.requestFile(fileId[i]).toPromise().then((resp0: any) => {
-        this.time = this.pipe.transform(resp0.time_added, 'dd:MM:yy') ;
-        this.image = 'http://media.mw.metropolia.fi/wbma/uploads/'+resp0.filename;
-        this.content = resp0.description;
-        console.log(resp0.user_id);
-        this.user.getUser(resp0.user_id).toPromise().then ((resp1: any) => {
-          this.name = resp1.username;
-          console.log(resp1.user_id);
-          this.media.searchFile('#$%^lnf#$%^profile#$%^'+resp1.user_id).toPromise().then((resp2: any) => {
-            this.profile = 'http://media.mw.metropolia.fi/wbma/uploads/'+resp2[0].filename;
-            console.log(this.time);
-            console.log(this.content);
-            console.log(this.profile);
-            console.log(this.image);
-            console.log(this.name);
-            this.cardItems[i] = {
-              user: {
-                avatar: this.profile,
-                name: this.name
-              },
+              public pipe: DatePipe,
+              public market: MarketProvider) {
+    this.media.searchFile('#$%^lnf*catmedia*categoryfound*').toPromise().then((resp: any) => {
+      for (let i=0;i< resp.length;i++){
+        let start = resp[i].title.indexOf('*yearto')-4;
+        let year = resp[i].title.substr(start,4);
+        console.log(year);
+        if ((2018 - Number(year)) > 1) {
+          this.fileid.push(resp[i].file_id);
+        }
+      }
+      console.log(this.fileid);
+      this.marketitems = this.market.input(this.fileid);
+      console.log(this.marketitems);
+    })
 
-              date: this.time,
-              image: this.image,
-              content: this.content
-
-            }
-          })
-        })
-      })
-
-    }
   }
 }

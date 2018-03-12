@@ -11,13 +11,13 @@ import { HttpModule } from '@angular/http';
   and Angular DI.
 */
 @Injectable()
-export class CardProvider {
+export class MarketProvider {
   finish = [];
   done: boolean;
   apiUrl = 'http://media.mw.metropolia.fi/wbma';
   mediaUrl = 'http://media.mw.metropolia.fi/wbma/uploads/';
   constructor(public http: HttpClient, public mod: HttpModule) {
-    console.log('Hello CardProvider Provider');
+    console.log('HelloMarketProvider Provider');
     this.done =false;
   }
 
@@ -67,13 +67,13 @@ export class CardProvider {
       })
     })
     return promise;
-    }
+  }
 
 
-    input(fileid = []){
-      for (let i =0; i< fileid.length; i++){
-        this.drawCard(fileid[i])
-      }
-      return this.finish;
+  input(fileid = []){
+    for (let i =0; i< fileid.length; i++){
+      this.drawCard(fileid[i])
     }
+    return this.finish;
+  }
 }

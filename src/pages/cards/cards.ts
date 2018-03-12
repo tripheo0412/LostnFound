@@ -14,6 +14,8 @@ import {CardProvider} from "../../providers/card/card";
 })
 export class CardsPage {
   carditem = [];
+  reset = [];
+  fileId = [];
   constructor(public navCtrl: NavController,
               public media: MediaProvider,
               public navPam: NavParams,
@@ -21,11 +23,17 @@ export class CardsPage {
               public pipe: DatePipe,
               public card: CardProvider,
               ) {
-    let fileId = this.navPam.get('param1');
-    fileId = fileId.filter(item => item !== null);
-    console.log(fileId);
-    this.carditem = card.input(fileId);
+    this.fileId = this.navPam.get('param1');
+    this.fileId = this.fileId.filter(item => item !== null);
+    console.log(this.fileId);
+    this.carditem = card.input(this.fileId);
 
 
   }
+  ionViewDidLeave() {
+
+    this.carditem = this.reset;
+    console.log(this.carditem);
+  }
+
 }
