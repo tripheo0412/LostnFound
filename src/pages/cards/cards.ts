@@ -1,49 +1,62 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
-
+import {User} from "../../providers/user/user";
+import { DatePipe } from "@angular/common";
 
 
 @IonicPage()
 @Component({
   selector: 'page-cards',
-  templateUrl: 'cards.html'
+  templateUrl: 'cards.html',
+  providers: [DatePipe]
 })
 export class CardsPage {
-  cardItems: any[];
+  cardItems = [];
+  name: any;
+  profile: any;
+  image: any;
+  time: any;
+  content: any;
+  constructor(public navCtrl: NavController,
+              public media: MediaProvider,
+              public navPam: NavParams,
+              public user: User,
+              public pipe: DatePipe) {
+    let fileId = this.navPam.get('param1');
+    console.log(fileId);
+    for (let i = 0; i < fileId.length; i++){
+      console.log(localStorage.getItem('token'));
+      this.media.requestFile(fileId[i]).toPromise().then((resp0: any) => {
+        this.time = this.pipe.transform(resp0.time_added, 'dd:MM:yy') ;
+        this.image = 'http://media.mw.metropolia.fi/wbma/uploads/'+resp0.filename;
+        this.content = resp0.description;
+        console.log(resp0.user_id);
+        this.user.getUser(resp0.user_id).toPromise().then ((resp1: any) => {
+          this.name = resp1.username;
+          console.log(resp1.user_id);
+          this.media.searchFile('#$%^lnf#$%^profile#$%^'+resp1.user_id).toPromise().then((resp2: any) => {
+            this.profile = 'http://media.mw.metropolia.fi/wbma/uploads/'+resp2[0].filename;
+            console.log(this.time);
+            console.log(this.content);
+            console.log(this.profile);
+            console.log(this.image);
+            console.log(this.name);
+            this.cardItems[i] = {
+              user: {
+                avatar: this.profile,
+                name: this.name
+              },
 
-  constructor(public navCtrl: NavController, public media: MediaProvider) {
+              date: this.time,
+              image: this.image,
+              content: this.content
 
+            }
+          })
+        })
+      })
 
-    this.cardItems = [
-      {
-        user: {
-          avatar: 'assets/img/marty-avatar.png',
-          name: 'Marty McFly'
-        },
-        date: 'November 5, 1955',
-        image: 'assets/img/advance-card-bttf.png',
-        content: 'Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.',
-      },
-      {
-        user: {
-          avatar: 'assets/img/sarah-avatar.png.jpeg',
-          name: 'Sarah Connor'
-        },
-        date: 'May 12, 1984',
-        image: 'assets/img/advance-card-tmntr.jpg',
-        content: 'I face the unknown future, with a sense of hope. Because if a machine, a Terminator, can learn the value of human life, maybe we can too.'
-      },
-      {
-        user: {
-          avatar: 'assets/img/ian-avatar.png',
-          name: 'Dr. Ian Malcolm'
-        },
-        date: 'June 28, 1990',
-        image: 'assets/img/advance-card-jp.jpg',
-        content: 'Your scientists were so preoccupied with whether or not they could, that they didn\'t stop to think if they should.'
-      }
-    ];
-
+    }
   }
 }

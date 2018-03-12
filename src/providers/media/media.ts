@@ -66,6 +66,16 @@ export class MediaProvider {
     return seq;
   }
 
+  getPicture(filename) {
+    let seq = this.api.get('uploads/'+filename,this.api.settings);
+    seq.subscribe((resp: any) => {
+      console.log(resp);
+    }, err => {
+      console.log(err);
+    });
+    return seq;
+  }
+
   updateFile(id, des) {
     const body = {
       description: des

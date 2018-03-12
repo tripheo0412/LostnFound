@@ -3,7 +3,7 @@ import 'rxjs/add/operator/toPromise';
 import { Injectable } from '@angular/core';
 
 import { Api } from '../api/api';
-import {HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 /**
  * Most apps have the concept of a User. This is a simple provider
@@ -27,15 +27,16 @@ import {HttpHeaders} from "@angular/common/http";
 @Injectable()
 export class User {
   _user: any;
+  token:any;
 
-  constructor(public api: Api) { }
+  constructor(public api: Api, public http: HttpClient) { }
 
   /**
    * Send a POST request to our login endpoint with the data
    * the user entered on the form.
    */
   login(accountInfo: any) {
-    let seq = this.api.post('login', accountInfo).share();
+    let seq = this.http.post('http://media.mw.metropolia.fi/wbma/login', accountInfo).share();
     console.log('loginuser');
 
     seq.subscribe((res: any) => {
@@ -58,7 +59,7 @@ export class User {
    * the user entered on the form.
    */
   signup(accountInfo: any) {
-    let seq = this.api.post('users', accountInfo).share();
+    let seq = this.http.post('http://media.mw.metropolia.fi/wbma/users', accountInfo).share();
 
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
@@ -85,11 +86,8 @@ export class User {
     this._user = resp.user;
   }
 
-  getUser(token) {
-    const settings = {
-      headers: new HttpHeaders().set('x-access-token',token)
-    }
-    let seq = this.api.get('users/user',settings);
+  getUser(id) {
+    let seq = this.api.get('users/'+id,this.api.settings);
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
         console.log('test'+res.user_id);

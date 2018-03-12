@@ -109,26 +109,17 @@ export class SignupPage {
    * back to the presenter.
    */
 
-
-  done() {
-    console.log(this.file);
-    const body: FormData = new FormData();
-    body.append('file', this.file);
-    body.append('title', '#$%^lnf#$%^profile#$%^' + this.user_id);
-    const settings = {
-      headers: new HttpHeaders().set('x-access-token', localStorage.getItem('token'))
-    }
-    this.api.settings = settings;
-    this.media.uploadFile(body);
-    this.navCtrl.push(MainPage);
-
-  }
-
   doSignUp() {
     this.user.signup(this.account).toPromise().then(response => {
       console.log(response);
-      this.user.login(this.account).toPromise().then(response1 =>{
-        this.done();
+      this.user.login(this.account).toPromise().then((response1: any) =>{
+        console.log(response1.user.user_id)
+        console.log(this.file);
+        const body: FormData = new FormData();
+        body.append('file', this.file);
+        body.append('title', '#$%^lnf#$%^profile#$%^' + response1.user.user_id);
+        this.media.uploadFile(body);
+        this.navCtrl.push(MainPage);
       })
     }, (err) => {
       this.navCtrl.push(WelcomePage);

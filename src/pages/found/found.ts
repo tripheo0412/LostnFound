@@ -93,7 +93,7 @@ export class FoundPage {
 
   yearChangeFrom(val: any) {
     this.yearFrom = val;
-    if ((((val % 4 == 0) && (val % 100 != 0)) || (val % 400 == 0)) && this.monthFrom == '02') {
+    if (((val % 4 == 0) && (val % 100 != 0)) || (val % 400 == 0)) {
       this.leap = true;
     }else {
       this.leap = false;
@@ -122,7 +122,7 @@ export class FoundPage {
 
   yearChangeTo(val: any) {
     this.yearTo = val;
-    if ((((val % 4 == 0) && (val % 100 != 0)) || (val % 400 == 0)) && this.monthFrom == '02') {
+    if (((val % 4 == 0) && (val % 100 != 0)) || (val % 400 == 0)) {
       this.leap = true;
     }else {
       this.leap = false;
@@ -149,14 +149,16 @@ export class FoundPage {
       });
       let toast = this.toastCtrl.create({
         message: `
-          Please upload your image and write a brief description.
+          Please upload image of founded and write a brief description.
         `,
         duration: 3000,
         position: 'top'
       });
       toast.present();
     } else {
-      this.navCtrl.push('CardsPage');
+      this.navCtrl.push('CardsPage',{
+        param1: this.foundId
+      });
       let toast = this.toastCtrl.create({
         message: `
           Woohoo there are some matching items \n
@@ -184,6 +186,7 @@ export class FoundPage {
       +'*monthto*dayfrom'
       +this.dayFrom
       +'*'+this.dayTo
+      +'dayto'
     ;
     console.log(foundTitle);
     let seq = this.media.searchFile('#$%^lnf*typemedia*categorylost*type'
@@ -193,7 +196,17 @@ export class FoundPage {
     seq.toPromise().then((resp: any) => {
       console.log(resp.length);
       if (resp.length == 0){
-        this.navCtrl.push('ItemCreatePage');
+        this.navCtrl.push('ItemCreatePage',{
+          param1: foundTitle
+        });
+        let toast = this.toastCtrl.create({
+          message: `
+          Please upload image of founded and write a brief description.
+        `,
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
       } else {
         for (let i = 0; i < resp.length; i++){
           let startyear = resp[i].title.indexOf("yearfrom") + 8;
@@ -220,9 +233,9 @@ export class FoundPage {
             console.log(foundId[i]);
           }
         }
+        this.foundId = foundId;
+        this.retFound(foundTitle);
       }
-      this.foundId = foundId;
-      this.retFound(foundTitle);
     });
   }
   retLost(title){
@@ -232,15 +245,16 @@ export class FoundPage {
         param1: title
       });
       let toast = this.toastCtrl.create({
-        message: "Unfortunately, your item has not been found yet \n" +
-        "Please upload your image and write a brief description."
+        message: "Unfortunately, your item has not been found yet. Please upload your image and write a brief description."
         ,
         duration: 3000,
         position: 'top'
       });
       toast.present();
     } else {
-      this.navCtrl.push('CardsPage');
+      this.navCtrl.push('CardsPage',{
+        param1: this.lostId
+      });
       let toast = this.toastCtrl.create({
         message: `
           Woohoo there are some matching items
@@ -267,6 +281,7 @@ export class FoundPage {
       +'*monthto*dayfrom'
       +this.dayFrom
       +'*'+this.dayTo
+      +'dayto'
     ;
     let seq = this.media.searchFile('#$%^lnf*typemedia*categoryfound*type'
       +this.type
@@ -275,39 +290,52 @@ export class FoundPage {
     seq.toPromise().then((resp: any) => {
       console.log(resp.length);
       if (resp.length == 0){
-        console.log('chuyen page');
-        this.navCtrl.push('ItemCreatePage');
+        this.navCtrl.push('ItemCreatePage',{
+          param1: lostTitle
+        });
+        let toast = this.toastCtrl.create({
+          message: "Unfortunately, your item has not been found yet. Please upload your image and write a brief description."
+          ,
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
       } else {
         for (let i = 0; i < resp.length; i++){
           let startyear = resp[i].title.indexOf("yearfrom") + 8;
           let endyear = resp[i].title.indexOf("yearto");
           let year = resp[i].title.substring(startyear,endyear).replace('*','');
           if (Number(this.yearFrom) == Number(year.substr(4,4))){
+            console.log('nam bang');
             let startmonth = resp[i].title.indexOf("monthfrom") + 9;
             let endmonth = resp[i].title.indexOf("monthto");
             let month = resp[i].title.substring(startmonth,endmonth).replace('*','');
             if (Number(this.monthFrom) == Number(month.substr(2,2))){
+              console.log('thang bang');
               let startday = resp[i].title.indexOf("dayfrom") + 7;
               let endday = resp[i].title.indexOf("dayto");
               let day = resp[i].title.substring(startday,endday).replace('*','');
               if (Number(this.dayFrom) <= Number(day.substr(2,2))){
+                console.log('no bang ma');
                 lostId[i] =resp[i].file_id;
                 console.log(lostId[i]);
               }
             } else if (Number(this.monthFrom) < Number(month.substr(2,2))) {
+              console.log('thang ko bang');
               lostId[i] = resp[i].file_id;
               console.log(lostId[i]);
             }
           } else if (Number(this.yearFrom) < Number(year.substr(4,4))) {
+            console.log('nam ko bang');
             lostId[i] = resp[i].file_id;
             console.log(lostId[i]);
           }
 
         }
         console.log(this.lostId.length);
+        this.lostId = lostId;
+        this.retLost(lostTitle);
       }
-      this.lostId = lostId;
-      this.retLost(lostTitle);
     });
   }
   ionViewDidLoad() {
