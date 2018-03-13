@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
 import {User} from "../../providers/user/user";
 import { DatePipe } from "@angular/common";
 import {CardProvider} from "../../providers/card/card";
+import {CardModalPage} from "../card-modal/card-modal";
 
 
 @IonicPage()
@@ -22,7 +23,7 @@ export class CardsPage {
               public user: User,
               public pipe: DatePipe,
               public card: CardProvider,
-              ) {
+              public modalCtrl: ModalController) {
     this.fileId = this.navPam.get('param1');
     this.fileId = this.fileId.filter(item => item !== null);
     console.log(this.fileId);
@@ -34,6 +35,11 @@ export class CardsPage {
 
     this.carditem = this.reset;
     console.log(this.carditem);
+  }
+
+  openModal(item: any) {
+    let myModal = this.modalCtrl.create(CardModalPage,item);
+    myModal.present();
   }
 
 }

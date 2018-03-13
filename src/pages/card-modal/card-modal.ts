@@ -1,4 +1,4 @@
-import {Component, Injector, ViewChild} from '@angular/core';
+import {Component, Injector} from '@angular/core';
 import {IonicPage,  NavParams, ViewController} from 'ionic-angular';
 import {CallNumber} from "@ionic-native/call-number";
 
