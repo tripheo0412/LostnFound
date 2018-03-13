@@ -21,6 +21,7 @@ export class Items {
       this.media.requestFileByUser(resp.user_id).toPromise().then((resp: any) => {
         for (let i = 0; i < resp.length; i++) {
           console.log(resp[i].title);
+          let id = resp[i].file_id;
           if (resp[i].title.search('profile') > -1){
             console.log('found');
             phone = resp[i].title.substr(resp[i].title.lastIndexOf('phone') +5,10);
@@ -35,7 +36,8 @@ export class Items {
               "name": name,
               "profilePic": profile,
               "about": description,
-              "phone": phone
+              "phone": phone,
+              "id": id
             }
           }
         }
@@ -79,5 +81,8 @@ export class Items {
 
   delete(item: Item) {
     this.items.splice(this.items.indexOf(item), 1);
+    this.media.deleteFile(item.id).subscribe((resp: any)=> {
+      console.log(resp);
+    });
   }
 }

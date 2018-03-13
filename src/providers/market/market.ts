@@ -75,7 +75,7 @@ export class MarketProvider {
               content: content,
               type: type,
               location: location,
-              src: 'assets/icon/cardicon/'+type+'-icon.png',
+              src: '../assets/icon/cardicon/'+type+'-icon.png',
               datefrom: yearfrom+'-'+monthfrom+'-'+dayfrom ,
               dateto: yearto+'-'+monthto+'-'+dayto,
               phone: phone
