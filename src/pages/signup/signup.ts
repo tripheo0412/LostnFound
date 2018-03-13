@@ -1,7 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {IonicPage, NavController, ToastController, ViewController} from 'ionic-angular';
-
 import {User} from '../../providers/providers';
 import {MainPage} from '../pages';
 import {Camera} from "@ionic-native/camera";
