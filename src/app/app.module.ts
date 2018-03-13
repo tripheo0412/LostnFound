@@ -23,6 +23,7 @@ import { CardProvider } from '../providers/card/card';
 import { MarketProvider } from '../providers/market/market';
 import {CardModalPage} from "../pages/card-modal/card-modal";
 import { CallNumber } from '@ionic-native/call-number';
+import { Facebook } from '@ionic-native/facebook';
 
 
 // The translate loader needs to know where to load i18n files
@@ -88,7 +89,8 @@ export function provideSettings(storage: Storage) {
     CardProvider,
     MarketProvider,
     CardModalPage,
-    CallNumber
+    CallNumber,
+    Facebook
 
 
   ]
