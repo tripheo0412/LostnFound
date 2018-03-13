@@ -1,3 +1,57 @@
 page-cards {
+  .toolbar-background {
+    background-color: transparent;
+  }
 
+  .toolbar-title{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .background{
+    background-image: url('../assets/img/welcome/bg.jpg');
+  }
+
+  .card-setting{
+    margin-top: 30px;
+    border-radius: 15px;
+  }
+
+  .name-setting{
+    margin-top: 5px;
+    margin-left: 10px;
+    background-color: #3DD6D0;
+    border-radius: 15px;
+    text-align: center;
+  }
+
+  .icon-setting{
+    width: 80%!important;
+  }
+
+  ion-grid{
+    padding: 0 !important;
+  }
+
+  ion-col{
+    padding: 0 !important;
+  }
+
+  .item-image{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    column-span: all;
+    background-size: cover;
+  }
+
+  .word-bold{
+    font-weight: bold;
+  }
+
+  .word-name{
+    color: white;
+    font-size: 20px;
+  }
 }

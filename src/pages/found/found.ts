@@ -49,7 +49,7 @@ export class FoundPage {
               public camera: Camera,
               public formBuilder: FormBuilder,
               public toastCtrl: ToastController)   {
-    this.type = 'Phones';
+    this.type = 'Phone';
     this.location = 'Helsinki';
     this.monthFrom = '01';
     this.monthTo = '01';

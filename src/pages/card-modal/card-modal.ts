@@ -1,4 +1,4 @@
-import {Component, Injector} from '@angular/core';
+import {Component, Injector, ViewChild} from '@angular/core';
 import {IonicPage,  NavParams, ViewController} from 'ionic-angular';
 import {CallNumber} from "@ionic-native/call-number";
 
@@ -14,6 +14,7 @@ import {CallNumber} from "@ionic-native/call-number";
   templateUrl: 'card-modal.html',
 })
 export class CardModalPage {
+  name = this.navParam.get('name')
   phone = this.navParams.get('phone');
   image = this.navParams.get('image');
   type = this.navParams.get('type');

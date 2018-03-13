@@ -1,29 +1,46 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Market</ion-title>
+  <ion-navbar >
+    <ion-title>MARKET</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-  <ion-card *ngFor="let item of marketitems">
+<ion-content class="background" >
+  <ion-card class="card-setting" *ngFor="let item of marketitems">
 
-    <ion-item>
-      <ion-avatar item-start>
-        <img [src]="item.avatar">
-      </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <p>{{item.datefrom}}</p>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col align-items-stretch col-5>
+          <img class="item-image" [src]="item.image" (click)="openModal(item)">
+        </ion-col>
+        <ion-col col-7>
+          <ion-row>
+            <ion-col col-7>
+              <ion-item class="name-setting">
+                <p class="word-name">{{item.name}}</p>
+              </ion-item>
+            </ion-col>
+            <ion-col col-2></ion-col>
+            <ion-col col-3 align-self-center>
+              <div class="icon-setting" >
+                <img [src]="item.src">
+              </div>
+            </ion-col>
+          </ion-row>
 
-    <img [src]="item.image" (click)="openModal(item)">
 
-    <ion-card-content>
-      <p>{{item.content}}</p>
-      <p>{{item.location}}</p>
-      <p>{{item.type}}</p>
-    </ion-card-content>
+          <ion-card-content>
+            <p><b>Type:</b> {{item.type}}</p>
+            <p><b>Location:</b> {{item.location}}</p>
+            <p><b>Time:</b> {{item.datefrom}}</p>
+          </ion-card-content>
+        </ion-col>
+
+      </ion-row>
+
+    </ion-grid>
+
   </ion-card>
 </ion-content>

@@ -1,3 +1,57 @@
 page-card-modal {
+  .background-image{
+    background-image: url('../assets/img/welcome/bg.jpg');
+  }
 
+  .toolbar-background {
+    background-color: black;
+  }
+
+  .toolbar-title{
+    color: white;
+    font-size: 20px;
+  }
+
+  .header-setting{
+    background-color: black!important;
+  }
+
+  .button-setting{
+    background-color: transparent;
+    font-size: 20px;
+    width: 100%;
+  }
+
+  .image-setting{
+    width: 100%;
+    height: 100%;
+  }
+
+  .grid-setting{
+    padding: 0!important;
+  }
+
+  .button-setting2{
+    margin-top: 30px;
+    margin-left: 50px;
+    background-color: #3DD6D0;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    width: 50%;
+    height: 30%;
+    font-size: 20px;
+  }
+
+  ion-row{
+    padding-top: 0;
+  }
+
+  p{
+    font-size: 16px;
+    color: white;
+  }
+  .bluemint{
+    color: #3DD6D0;
+  }
 }
