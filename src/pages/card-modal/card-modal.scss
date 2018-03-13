@@ -4,12 +4,17 @@ page-card-modal {
   }
 
   .toolbar-background {
-    background-color: black;
+    background-color: transparent;
   }
 
   .toolbar-title{
     color: white;
     font-size: 20px;
+    text-align: center;
+  }
+
+  ion-icon{
+    color: white!important;
   }
 
   .header-setting{
@@ -19,7 +24,6 @@ page-card-modal {
   .button-setting{
     background-color: transparent;
     font-size: 20px;
-    width: 100%;
   }
 
   .image-setting{
@@ -40,7 +44,7 @@ page-card-modal {
     color: white;
     width: 50%;
     height: 30%;
-    font-size: 20px;
+    font-size: 15px;
   }
 
   ion-row{

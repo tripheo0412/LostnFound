@@ -7,9 +7,14 @@
 <ion-header >
 
   <ion-navbar class="header-setting">
-    <button class="button-setting" (click)="closeModal()">
-      <ion-icon ios="ios-backspace-outline" md="md-backspace-outline"></ion-icon>
-    </button>
+    <ion-row>
+      <ion-buttons>
+        <button ion-button icon-only (click)="closeModal()">
+          <ion-icon ios="ios-backspace" md="md-backspace"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>DETAIL</ion-title>
+    </ion-row>
   </ion-navbar>
 
 </ion-header>

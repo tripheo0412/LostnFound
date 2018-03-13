@@ -6,9 +6,28 @@ page-item-detail {
     height: 250px;
   }
 
+  .toolbar-title{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
+
   .item-detail {
+    color: white;
     width: 100%;
-    background: white;
+    background: transparent;
     position: absolute;
+  }
+
+  .background{
+    background-image: url('../assets/img/welcome/bg.jpg');
+  }
+
+  .toolbar-background {
+    background-color: transparent;
+  }
+
+  h2{
+    color: #3DD6D0;
   }
 }

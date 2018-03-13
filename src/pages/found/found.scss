@@ -10,6 +10,11 @@ page-found {
     background-color: inherit;
   }
 
+  .item-md{
+    background-color: transparent;
+    color: white;
+  }
+
   /* Style the buttons inside the tab */
   .tab button {
     background-color: inherit;
@@ -18,7 +23,7 @@ page-found {
     width: 100%;
     padding: 14px 16px;
     border: transparent;
-    transition: 0.3s;
+    transition: 1s;
     font-size: 20px;
     text-align: center;
     color: white;

@@ -1,3 +1,31 @@
 page-list-master {
+  .background{
+    background-image: url('../assets/img/welcome/bg.jpg');
+  }
 
+  .toolbar-background {
+    background-color: transparent;
+  }
+
+  .toolbar-title{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  ion-icon{
+    color: white!important;
+  }
+
+  .item-md{
+    background-image: url('../assets/img/welcome/bg.jpg');
+  }
+
+  h3{
+    color: white;
+  }
+
+  h2{
+    color: #3DD6D0;
+  }
 }
