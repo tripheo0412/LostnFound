@@ -21,11 +21,12 @@ export class SignupPage {
   // The account fields for the login form.
   // If you're using the username field with or without email, make
   // sure to add it to the type
-  account: { username: string, password: string, email: string } = {
+  account: { username: string, password: string, email: string} = {
     username: '',
     password: '',
     email: ''
   };
+  phone: '';
   @ViewChild('fileInput') fileInput;
 
   promises = [];
@@ -117,7 +118,7 @@ export class SignupPage {
         console.log(this.file);
         const body: FormData = new FormData();
         body.append('file', this.file);
-        body.append('title', '#$%^lnf#$%^profile#$%^' + response1.user.user_id);
+        body.append('title', '#$%^lnf#$%^profile#$%^' + response1.user.user_id+'*phone'+this.phone);
         this.media.uploadFile(body);
         this.navCtrl.push(MainPage);
       })

@@ -1,0 +1,24 @@
+<!--
+  Generated template for the CardModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>cardModal</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img [src]="image">
+  <p>{{type}}</p>
+  <img [src]="src">
+  <button (click)="call(phone)">{{phone}}</button>
+  <p>{{phone}}</p>
+  <p>{{location}}</p>
+  <button (click)="closeModal()">close</button>
+</ion-content>

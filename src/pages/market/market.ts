@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, ModalController} from 'ionic-angular';
 import {MediaProvider} from "../../providers/media/media";
 import {User} from "../../providers/user/user";
 import { DatePipe } from "@angular/common";
 import {MarketProvider} from "../../providers/market/market";
+import {CardModalPage} from "../card-modal/card-modal";
 
 
 @IonicPage()
@@ -20,12 +21,11 @@ export class MarketPage {
   image: any;
   time: any;
   content: any;
-  constructor(public navCtrl: NavController,
-              public media: MediaProvider,
-              public navPam: NavParams,
+  constructor(public media: MediaProvider,
               public user: User,
               public pipe: DatePipe,
-              public market: MarketProvider) {
+              public market: MarketProvider,
+              public modalCtrl: ModalController) {
     this.media.searchFile('#$%^lnf*catmedia*categoryfound*').toPromise().then((resp: any) => {
       for (let i=0;i< resp.length;i++){
         let start = resp[i].title.indexOf('*yearto')-4;
@@ -40,5 +40,9 @@ export class MarketPage {
       console.log(this.marketitems);
     })
 
+  }
+  openModal(item: any) {
+    let myModal = this.modalCtrl.create(CardModalPage,item);
+    myModal.present();
   }
 }

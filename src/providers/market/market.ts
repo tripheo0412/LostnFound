@@ -59,9 +59,11 @@ export class MarketProvider {
           }
           this.http.post(this.apiUrl+'/media/search/',body,settings).toPromise().then((resp: any) => {
             let avatar: string;
+            let phone: string;
             for (let i = 0; i< resp.length; i++){
               if (resp[i].length != 0 ){
                 avatar = this.mediaUrl+resp[i].filename;
+                phone = resp[i].title.substr(resp[i].title.lastIndexOf('phone') +5,10);
               }
               avatar = avatar;
             }
@@ -75,7 +77,8 @@ export class MarketProvider {
               location: location,
               src: 'assets/icon/cardicon/'+type+'-icon.png',
               datefrom: yearfrom+'-'+monthfrom+'-'+dayfrom ,
-              dateto: yearto+'-'+monthto+'-'+dayto
+              dateto: yearto+'-'+monthto+'-'+dayto,
+              phone: phone
             }
             console.log(drawCard);
             this.finish.push(drawCard);

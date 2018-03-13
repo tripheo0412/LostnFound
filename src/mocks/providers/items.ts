@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { Item } from '../../models/item';
 import {MediaProvider} from "../../providers/media/media";
 import {User} from "../../providers/user/user";
@@ -17,12 +16,15 @@ export class Items {
     let profile;
     let description;
     let items = [];
+    let phone;
     this.user.getCurrentUser().toPromise().then((resp: any) => {
       this.media.requestFileByUser(resp.user_id).toPromise().then((resp: any) => {
         for (let i = 0; i < resp.length; i++) {
           console.log(resp[i].title);
           if (resp[i].title.search('profile') > -1){
             console.log('found');
+            phone = resp[i].title.substr(resp[i].title.lastIndexOf('phone') +5,10);
+            console.log(phone);
           } else {
             let start = resp[i].title.indexOf('type') + 4;
             let end = resp[i].title.indexOf('*location');
@@ -32,7 +34,8 @@ export class Items {
             items[i-1] = {
               "name": name,
               "profilePic": profile,
-              "about": description
+              "about": description,
+              "phone": phone
             }
           }
         }

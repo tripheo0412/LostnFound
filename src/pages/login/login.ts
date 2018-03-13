@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-import { Facebook } from '@ionic-native/facebook';
 import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
 import {WelcomePage} from "../welcome/welcome";
@@ -30,81 +29,16 @@ export class LoginPage {
               public user: User,
               public toastCtrl: ToastController,
               public translateService: TranslateService,
-              private fb: Facebook,
               public api: Api,
               public media: MediaProvider) {
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
-    fb.getLoginStatus()
-      .then(res => {
-        console.log(res.status);
-        if(res.status === "connect") {
-          this.isLoggedIn = true;
-        } else {
-          this.isLoggedIn = false;
-        }
-      })
-      .catch(e => console.log(e));
   }
 
-  fblogin() {
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-      .then(res => {
-        if(res.status === "connected") {
-          this.isLoggedIn = true;
-          this.getUserDetail(res.authResponse.userID);
-          this.navCtrl.push('MainPage');
-        } else {
-          this.isLoggedIn = false;
-        }
-      })
-      .catch(e => console.log('Error logging into Facebook', e));
-  }
 
-  getUserDetail(userid) {
-    this.fb.api("/"+userid+"/?fields=id,email,name,picture,gender",["public_profile"])
-      .then(res => {
-        console.log(res);
-        this.users = res;
-        this.api.get('users/username/'+this.users.name).toPromise().then((resp: any) => {
-          if (resp.available == true) {
-            let account = {
-              username: this.users.name,
-              password: this.users.name+'facebook',
-              email: this.users.email
-            }
-            this.user.signup(account).toPromise().then((resp: any) => {
-              this.user.login(account).toPromise().then((resp: any) => {
-                const body: FormData = new FormData();
-                body.append('file', this.users.picture.data);
-                body.append('title', '#$%^lnf#$%^profile#$%^' + resp.user.user_id);
-                this.media.uploadFile(body);
-              })
 
-            })
-          } else {
-            let account = {
-              username: this.users.name,
-              password: this.users.name+'facebook'
-            }
-            this.user.login(account).toPromise().then((resp: any) => {
-              console.log(resp);
-            })
-          }
-        })
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
-
-  fblogout() {
-    this.fb.logout()
-      .then( res => this.isLoggedIn = false)
-      .catch(e => console.log('Error logout from Facebook', e));
-  }
 
   // Attempt to login in through our User service
   doLogin() {

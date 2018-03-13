@@ -89,4 +89,5 @@
     </plugin>
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="^4.5.4" />
+    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
 </widget>

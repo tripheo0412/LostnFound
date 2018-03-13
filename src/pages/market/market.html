@@ -18,7 +18,7 @@
       <p>{{item.datefrom}}</p>
     </ion-item>
 
-    <img [src]="item.image">
+    <img [src]="item.image" (click)="openModal(item)">
 
     <ion-card-content>
       <p>{{item.content}}</p>

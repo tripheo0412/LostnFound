@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import {IonicApp, IonicErrorHandler, IonicModule, NavController} from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/providers';
@@ -19,9 +19,10 @@ import { CommentProvider } from '../providers/comment/comment';
 import { FavouriteProvider } from '../providers/favourite/favourite';
 import { RatingProvider } from '../providers/rating/rating';
 import { TagProvider } from '../providers/tag/tag';
-import {Facebook} from "@ionic-native/facebook";
 import { CardProvider } from '../providers/card/card';
 import { MarketProvider } from '../providers/market/market';
+import {CardModalPage} from "../pages/card-modal/card-modal";
+import { CallNumber } from '@ionic-native/call-number';
 
 
 // The translate loader needs to know where to load i18n files
@@ -47,7 +48,8 @@ export function provideSettings(storage: Storage) {
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    CardModalPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ export function provideSettings(storage: Storage) {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    CardModalPage,
   ],
   providers: [
     Api,
@@ -82,9 +85,10 @@ export function provideSettings(storage: Storage) {
     FavouriteProvider,
     RatingProvider,
     TagProvider,
-    Facebook,
     CardProvider,
-    MarketProvider
+    MarketProvider,
+    CardModalPage,
+    CallNumber
 
 
   ]
