@@ -19,8 +19,8 @@ export class CardModalPage {
   type = this.navParams.get('type');
   location = this.navParams.get('location');
   content  = this.navParams.get('content');
-  datefrom = this.navParams.get('dayfrom');
-  dateto = this.navParams.get('dayto');
+  datefrom = this.navParams.get('datefrom');
+  dateto = this.navParams.get('dateto');
   src = this.navParams.get('src');
   constructor(private callNumber: CallNumber,public injector: Injector, public navParams: NavParams, public viewCtrl: ViewController) {
 
